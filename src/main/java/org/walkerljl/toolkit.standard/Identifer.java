@@ -1,0 +1,30 @@
+package org.walkerljl.toolkit.standard;
+
+/**
+ * Describe one kind of object which has id,name and group
+ *
+ * @author: lijunlin
+ */
+public interface Identifer {
+
+    /**
+     * Get id
+     *
+     * @return
+     */
+    String getId();
+
+    /**
+     * Get name
+     *
+     * @return
+     */
+    String getName();
+
+    /**
+     * Get groud
+     *
+     * @return
+     */
+    String getGroup();
+}
