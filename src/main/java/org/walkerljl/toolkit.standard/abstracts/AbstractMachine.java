@@ -3,7 +3,11 @@ package org.walkerljl.toolkit.standard.abstracts;
 import org.walkerljl.toolkit.logging.Logger;
 import org.walkerljl.toolkit.logging.LoggerFactory;
 import org.walkerljl.toolkit.standard.Machine;
-import org.walkerljl.toolkit.standard.exception.*;
+import org.walkerljl.toolkit.standard.exception.resouce.CannotDestroyResourceException;
+import org.walkerljl.toolkit.standard.exception.resouce.CannotInitResourceException;
+import org.walkerljl.toolkit.standard.exception.machine.CannotStartMachineException;
+import org.walkerljl.toolkit.standard.exception.machine.CannotStopMachineException;
+import org.walkerljl.toolkit.standard.exception.machine.MachineException;
 import org.walkerljl.toolkit.standard.support.MachineRepository;
 
 /**
@@ -24,6 +28,7 @@ public abstract class AbstractMachine implements Machine {
 
     @Override
     public void start() throws CannotStartMachineException {
+
         long startTime = System.currentTimeMillis();
         try {
             if (!running) {

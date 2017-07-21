@@ -3,8 +3,8 @@ package org.walkerljl.toolkit.standard;
 import org.walkerljl.toolkit.logging.Logger;
 import org.walkerljl.toolkit.logging.LoggerFactory;
 import org.walkerljl.toolkit.standard.abstracts.AbstractMachine;
-import org.walkerljl.toolkit.standard.exception.CannotStartMachineException;
-import org.walkerljl.toolkit.standard.exception.CannotStopMachineException;
+import org.walkerljl.toolkit.standard.exception.machine.CannotStartMachineException;
+import org.walkerljl.toolkit.standard.exception.machine.CannotStopMachineException;
 
 /**
  * Bootstrap
@@ -35,12 +35,17 @@ public class Bootstrap extends AbstractMachine implements Machine {
 
     @Override
     public void processStart() throws CannotStartMachineException {
-        LOGGER.debug("process start.");
+
+        if (LOGGER.isDebugEnabled()) {
+            LOGGER.debug("process start.");
+        }
     }
 
     @Override
     public void processStop() throws CannotStopMachineException {
-        LOGGER.debug("process stop.");
+        if (LOGGER.isDebugEnabled()) {
+            LOGGER.debug("process stop.");
+        }
     }
 
     @Override

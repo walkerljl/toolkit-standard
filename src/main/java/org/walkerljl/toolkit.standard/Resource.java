@@ -1,7 +1,7 @@
 package org.walkerljl.toolkit.standard;
 
-import org.walkerljl.toolkit.standard.exception.CannotDestroyResourceException;
-import org.walkerljl.toolkit.standard.exception.CannotInitResourceException;
+import org.walkerljl.toolkit.standard.exception.resouce.CannotDestroyResourceException;
+import org.walkerljl.toolkit.standard.exception.resouce.CannotInitResourceException;
 
 /**
  * Describe one kind of resource which can init and destroy.

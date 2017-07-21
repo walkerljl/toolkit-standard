@@ -3,8 +3,8 @@ package org.walkerljl.toolkit.standard.abstracts;
 import org.walkerljl.toolkit.logging.Logger;
 import org.walkerljl.toolkit.logging.LoggerFactory;
 import org.walkerljl.toolkit.standard.Resource;
-import org.walkerljl.toolkit.standard.exception.CannotDestroyResourceException;
-import org.walkerljl.toolkit.standard.exception.CannotInitResourceException;
+import org.walkerljl.toolkit.standard.exception.resouce.CannotDestroyResourceException;
+import org.walkerljl.toolkit.standard.exception.resouce.CannotInitResourceException;
 import org.walkerljl.toolkit.standard.support.ResourceRepository;
 
 /**

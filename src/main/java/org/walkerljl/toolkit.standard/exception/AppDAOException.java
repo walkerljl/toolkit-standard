@@ -1,9 +1,9 @@
 package org.walkerljl.toolkit.standard.exception;
 
 /**
- * 数据访问异常
+ * 应用数据访问层异常
  *
- * @author lijunlin
+ * @version $Id: AppDAOException.java, v 0.1 2017年07月12日 下午4:10 junlin.ljl Exp $
  */
 public class AppDAOException extends AppException {
 
@@ -28,20 +28,30 @@ public class AppDAOException extends AppException {
     /**
      * 构造函数
      *
-     * @param code 异常码
-     * @param message 异常消息
+     * @param e 异常对象
      */
-    public AppDAOException(String code, String message) {
-        super(code, message);
+    public AppDAOException(Throwable e) {
+        super(e);
     }
 
     /**
      * 构造函数
      *
-     * @param e 异常对象
+     * @param code 异常码
      */
-    public AppDAOException(Throwable e) {
-        super(e);
+    public AppDAOException(ErrorCode code) {
+        super(code.getDescription());
+        this.code = code;
+    }
+
+    /**
+     * 构造函数
+     *
+     * @param code 异常码
+     * @param message 异常消息
+     */
+    public AppDAOException(ErrorCode code, String message) {
+        super(code, message);
     }
 
     /**
@@ -61,7 +71,7 @@ public class AppDAOException extends AppException {
      * @param message 异常消息
      * @param e 异常对象
      */
-    public AppDAOException(String code, String message, Throwable e) {
+    public AppDAOException(ErrorCode code, String message, Throwable e) {
         super(code, message, e);
     }
 }

@@ -1,19 +1,20 @@
-package org.walkerljl.toolkit.standard.exception;
+package org.walkerljl.toolkit.standard.exception.resouce;
 
+import org.walkerljl.toolkit.standard.exception.ErrorCode;
 
 /**
- * 资源异常
+ * 不能销毁资源异常
  *
  * @author lijunlin
  */
-public class ResourceException extends AppException {
+public class CannotDestroyResourceException extends ResourceException {
 
     private static final long serialVersionUID = -6786549876849535944L;
 
     /**
      * 默认构造函数
      */
-    public ResourceException() {
+    public CannotDestroyResourceException() {
         super();
     }
 
@@ -22,7 +23,7 @@ public class ResourceException extends AppException {
      *
      * @param message 消息
      */
-    public ResourceException(String message) {
+    public CannotDestroyResourceException(String message) {
         super(message);
     }
 
@@ -32,7 +33,7 @@ public class ResourceException extends AppException {
      * @param code 异常码
      * @param message 消息
      */
-    public ResourceException(String code, String message) {
+    public CannotDestroyResourceException(ErrorCode code, String message) {
         super(message);
         this.code = code;
     }
@@ -42,7 +43,7 @@ public class ResourceException extends AppException {
      *
      * @param e 异常对象
      */
-    public ResourceException(Throwable e) {
+    public CannotDestroyResourceException(Throwable e) {
         super(e);
     }
 
@@ -52,7 +53,7 @@ public class ResourceException extends AppException {
      * @param message 异常消息
      * @param e 异常对象
      */
-    public ResourceException(String message, Throwable e) {
+    public CannotDestroyResourceException(String message, Throwable e) {
         super(message, e);
     }
 
@@ -63,7 +64,7 @@ public class ResourceException extends AppException {
      * @param message 异常消息
      * @param e 异常对象
      */
-    public ResourceException(String code, String message, Throwable e) {
+    public CannotDestroyResourceException(ErrorCode code, String message, Throwable e) {
         super(message, e);
         this.code = code;
     }

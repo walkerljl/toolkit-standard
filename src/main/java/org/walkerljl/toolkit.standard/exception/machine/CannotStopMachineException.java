@@ -1,18 +1,20 @@
-package org.walkerljl.toolkit.standard.exception;
+package org.walkerljl.toolkit.standard.exception.machine;
+
+import org.walkerljl.toolkit.standard.exception.ErrorCode;
 
 /**
- * 不能启动异常
+ * 不能停止异常
  *
  * @author lijunlin
  */
-public class CannotStartMachineException extends MachineException {
+public class CannotStopMachineException extends MachineException {
 
     private static final long serialVersionUID = -6786549876849535944L;
 
     /**
      * 默认构造函数
      */
-    public CannotStartMachineException() {
+    public CannotStopMachineException() {
         super();
     }
 
@@ -21,7 +23,7 @@ public class CannotStartMachineException extends MachineException {
      *
      * @param message 消息
      */
-    public CannotStartMachineException(String message) {
+    public CannotStopMachineException(String message) {
         super(message);
     }
 
@@ -31,7 +33,7 @@ public class CannotStartMachineException extends MachineException {
      * @param code 异常码
      * @param message 消息
      */
-    public CannotStartMachineException(String code, String message) {
+    public CannotStopMachineException(ErrorCode code, String message) {
         super(message);
         this.code = code;
     }
@@ -41,7 +43,7 @@ public class CannotStartMachineException extends MachineException {
      *
      * @param e 异常对象
      */
-    public CannotStartMachineException(Throwable e) {
+    public CannotStopMachineException(Throwable e) {
         super(e);
     }
 
@@ -51,7 +53,7 @@ public class CannotStartMachineException extends MachineException {
      * @param message 异常消息
      * @param e 异常对象
      */
-    public CannotStartMachineException(String message, Throwable e) {
+    public CannotStopMachineException(String message, Throwable e) {
         super(message, e);
     }
 
@@ -62,7 +64,7 @@ public class CannotStartMachineException extends MachineException {
      * @param message 异常消息
      * @param e 异常对象
      */
-    public CannotStartMachineException(String code, String message, Throwable e) {
+    public CannotStopMachineException(ErrorCode code, String message, Throwable e) {
         super(message, e);
         this.code = code;
     }

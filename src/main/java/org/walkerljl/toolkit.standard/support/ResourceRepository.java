@@ -1,7 +1,7 @@
 package org.walkerljl.toolkit.standard.support;
 
 import org.walkerljl.toolkit.standard.Resource;
-import org.walkerljl.toolkit.standard.exception.MachineException;
+import org.walkerljl.toolkit.standard.exception.machine.MachineException;
 
 import java.util.*;
 

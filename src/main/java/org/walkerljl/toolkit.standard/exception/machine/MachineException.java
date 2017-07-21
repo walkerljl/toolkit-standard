@@ -1,5 +1,7 @@
-package org.walkerljl.toolkit.standard.exception;
+package org.walkerljl.toolkit.standard.exception.machine;
 
+import org.walkerljl.toolkit.standard.exception.AppException;
+import org.walkerljl.toolkit.standard.exception.ErrorCode;
 
 /**
  * Machine异常
@@ -32,7 +34,7 @@ public class MachineException extends AppException {
      * @param code 异常码
      * @param message 消息
      */
-    public MachineException(String code, String message) {
+    public MachineException(ErrorCode code, String message) {
         super(message);
         this.code = code;
     }
@@ -63,7 +65,7 @@ public class MachineException extends AppException {
      * @param message 异常消息
      * @param e 异常对象
      */
-    public MachineException(String code, String message, Throwable e) {
+    public MachineException(ErrorCode code, String message, Throwable e) {
         super(message, e);
         this.code = code;
     }

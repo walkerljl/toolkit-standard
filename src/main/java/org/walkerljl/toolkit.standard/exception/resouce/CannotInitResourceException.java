@@ -1,18 +1,20 @@
-package org.walkerljl.toolkit.standard.exception;
+package org.walkerljl.toolkit.standard.exception.resouce;
+
+import org.walkerljl.toolkit.standard.exception.ErrorCode;
 
 /**
- * 不能销毁资源异常
+ * 不能初始化资源异常
  *
  * @author lijunlin
  */
-public class CannotDestroyResourceException extends ResourceException {
+public class CannotInitResourceException extends ResourceException {
 
     private static final long serialVersionUID = -6786549876849535944L;
 
     /**
      * 默认构造函数
      */
-    public CannotDestroyResourceException() {
+    public CannotInitResourceException() {
         super();
     }
 
@@ -21,7 +23,7 @@ public class CannotDestroyResourceException extends ResourceException {
      *
      * @param message 消息
      */
-    public CannotDestroyResourceException(String message) {
+    public CannotInitResourceException(String message) {
         super(message);
     }
 
@@ -31,7 +33,7 @@ public class CannotDestroyResourceException extends ResourceException {
      * @param code 异常码
      * @param message 消息
      */
-    public CannotDestroyResourceException(String code, String message) {
+    public CannotInitResourceException(ErrorCode code, String message) {
         super(message);
         this.code = code;
     }
@@ -41,7 +43,7 @@ public class CannotDestroyResourceException extends ResourceException {
      *
      * @param e 异常对象
      */
-    public CannotDestroyResourceException(Throwable e) {
+    public CannotInitResourceException(Throwable e) {
         super(e);
     }
 
@@ -51,7 +53,7 @@ public class CannotDestroyResourceException extends ResourceException {
      * @param message 异常消息
      * @param e 异常对象
      */
-    public CannotDestroyResourceException(String message, Throwable e) {
+    public CannotInitResourceException(String message, Throwable e) {
         super(message, e);
     }
 
@@ -62,7 +64,7 @@ public class CannotDestroyResourceException extends ResourceException {
      * @param message 异常消息
      * @param e 异常对象
      */
-    public CannotDestroyResourceException(String code, String message, Throwable e) {
+    public CannotInitResourceException(ErrorCode code, String message, Throwable e) {
         super(message, e);
         this.code = code;
     }

@@ -130,7 +130,7 @@ public class Message<T> implements Serializable {
      * @return
      */
     public static <T> Message<T> success(T data) {
-        return Message.success(DEFAULT_SUCCESS_CODE, null, data);
+        return Message.success(DEFAULT_SUCCESS_CODE, DEFAULT_SUCCESS_BODY, data);
     }
 
     /**
@@ -149,11 +149,10 @@ public class Message<T> implements Serializable {
      *
      * @param code 消息码
      * @param body 消息体
-     * @param data 数据
      * @return
      */
-    public static <T> Message<T> success(String code, String body, T data) {
-        return new Message<T>(true, code, body, data);
+    public static <T> Message<T> success(String code, String body) {
+        return new Message<T>(true, code, body, null);
     }
 
     /**
@@ -161,10 +160,11 @@ public class Message<T> implements Serializable {
      *
      * @param code 消息码
      * @param body 消息体
+     * @param data 数据
      * @return
      */
-    public static <T> Message<T> success(String code, String body) {
-        return new Message<T>(true, code, body, null);
+    public static <T> Message<T> success(String code, String body, T data) {
+        return new Message<T>(true, code, body, data);
     }
 
     /**

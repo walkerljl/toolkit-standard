@@ -3,7 +3,7 @@ package org.walkerljl.toolkit.standard.exception;
 /**
  * 应用异常
  *
- * @author lijunlin
+ * @version $Id: AppException.java, v 0.1 2017年07月12日 下午4:10 junlin.ljl Exp $
  */
 public class AppException extends UncheckedException {
 
@@ -12,7 +12,7 @@ public class AppException extends UncheckedException {
     /**
      * 异常码
      */
-    protected String code = "";
+    protected ErrorCode code;
 
     /**
      * 默认构造函数
@@ -33,21 +33,31 @@ public class AppException extends UncheckedException {
     /**
      * 构造函数
      *
-     * @param code 异常码
-     * @param message 消息
+     * @param e 异常对象
      */
-    public AppException(String code, String message) {
-        super(message);
+    public AppException(Throwable e) {
+        super(e);
+    }
+
+    /**
+     * 构造函数
+     *
+     * @param code 异常码
+     */
+    public AppException(ErrorCode code) {
+        super(code.getDescription());
         this.code = code;
     }
 
     /**
      * 构造函数
      *
-     * @param e 异常对象
+     * @param code 异常码
+     * @param message 消息
      */
-    public AppException(Throwable e) {
-        super(e);
+    public AppException(ErrorCode code, String message) {
+        super(message);
+        this.code = code;
     }
 
     /**
@@ -67,7 +77,7 @@ public class AppException extends UncheckedException {
      * @param message 异常消息
      * @param e 异常对象
      */
-    public AppException(String code, String message, Throwable e) {
+    public AppException(ErrorCode code, String message, Throwable e) {
         super(message, e);
         this.code = code;
     }
@@ -77,7 +87,7 @@ public class AppException extends UncheckedException {
      *
      * @return
      */
-    public String getCode() {
+    public ErrorCode getCode() {
         return code;
     }
 }

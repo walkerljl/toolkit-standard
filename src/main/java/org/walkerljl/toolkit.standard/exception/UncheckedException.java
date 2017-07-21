@@ -3,7 +3,7 @@ package org.walkerljl.toolkit.standard.exception;
 /**
  * 非检查型异常
  *
- * @author lijunlin
+ * @version $Id: AppServiceException.java, v 0.1 2017年07月12日 下午4:10 junlin.ljl Exp $
  */
 public class UncheckedException extends RuntimeException {
 

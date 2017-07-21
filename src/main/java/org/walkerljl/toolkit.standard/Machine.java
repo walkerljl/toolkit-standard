@@ -1,8 +1,8 @@
 package org.walkerljl.toolkit.standard;
 
-import org.walkerljl.toolkit.standard.exception.CannotStartMachineException;
-import org.walkerljl.toolkit.standard.exception.CannotStopMachineException;
-import org.walkerljl.toolkit.standard.exception.MachineException;
+import org.walkerljl.toolkit.standard.exception.machine.CannotStartMachineException;
+import org.walkerljl.toolkit.standard.exception.machine.CannotStopMachineException;
+import org.walkerljl.toolkit.standard.exception.machine.MachineException;
 
 /**
  * Machine
