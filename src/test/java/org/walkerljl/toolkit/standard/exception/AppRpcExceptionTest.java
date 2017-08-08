@@ -6,8 +6,7 @@ import org.walkerljl.toolkit.standard.BaseUnitTest;
 
 /**
  *
- * @author junlin.ljl
- * @version $Id: AppRpcExceptionTest.java, v 0.1 2017年07月16日 下午4:08 junlin.ljl Exp $
+ * @author lijunlin
  */
 public class AppRpcExceptionTest extends BaseUnitTest {
 

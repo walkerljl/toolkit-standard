@@ -5,8 +5,7 @@ import org.testng.annotations.Test;
 
 /**
  *
- * @author junlin.ljl
- * @version $Id: MessageTest.java, v 0.1 2017年07月16日 上午10:41 junlin.ljl Exp $
+ * @author lijunlin
  */
 public class MessageTest {
 

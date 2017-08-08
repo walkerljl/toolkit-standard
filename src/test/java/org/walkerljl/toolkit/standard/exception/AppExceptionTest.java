@@ -5,8 +5,7 @@ import org.testng.annotations.Test;
 
 /**
  *
- * @author junlin.ljl
- * @version $Id: AppExceptionTest.java, v 0.1 2017年07月12日 下午4:16 junlin.ljl Exp $
+ * @author lijunlin
  */
 public class AppExceptionTest {
 

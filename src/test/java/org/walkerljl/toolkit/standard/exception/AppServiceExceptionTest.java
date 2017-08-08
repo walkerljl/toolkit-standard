@@ -6,8 +6,7 @@ import org.walkerljl.toolkit.standard.BaseUnitTest;
 
 /**
  *
- * @author junlin.ljl
- * @version $Id: AppServiceExceptionTest.java, v 0.1 2017年07月16日 下午4:09 junlin.ljl Exp $
+ * @author lijunlin
  */
 public class AppServiceExceptionTest extends BaseUnitTest {
 

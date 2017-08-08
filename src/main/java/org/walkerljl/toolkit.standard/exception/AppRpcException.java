@@ -3,7 +3,7 @@ package org.walkerljl.toolkit.standard.exception;
 /**
  * 应用RPC异常
  *
- * @version $Id: AppRpcException.java, v 0.1 2017年07月12日 下午4:10 junlin.ljl Exp $
+ * @author lijunlin
  */
 public class AppRpcException extends AppException {
 

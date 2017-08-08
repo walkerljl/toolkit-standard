@@ -3,7 +3,7 @@ package org.walkerljl.toolkit.standard.exception;
 /**
  * 应用业务逻辑异常
  *
- * @version $Id: AppServiceException.java, v 0.1 2017年07月12日 下午4:10 junlin.ljl Exp $
+ * @author lijunlin
  */
 public class AppServiceException extends AppException {
 

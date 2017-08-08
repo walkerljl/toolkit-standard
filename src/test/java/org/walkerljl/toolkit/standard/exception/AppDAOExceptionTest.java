@@ -5,8 +5,7 @@ import org.testng.annotations.Test;
 
 /**
  *
- * @author junlin.ljl
- * @version $Id: AppDAOExceptionTest.java, v 0.1 2017年07月16日 下午4:06 junlin.ljl Exp $
+ * @author lijunlin
  */
 public class AppDAOExceptionTest {
 
