@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
  *
  * @author lijunlin
  */
-public class MessageTest {
+public class ResultTest {
 
     /**
      * 默认成功编码
@@ -20,31 +20,31 @@ public class MessageTest {
     /**
      * 默认成功消息体
      */
-    private static final String DEFAULT_SUCCESS_BODY = "操作成功";
+    private static final String DEFAULT_SUCCESS_MESSAGE = "操作成功";
     /**
      * 默认失败消息体
      */
-    private static final String DEFAULT_FAILURE_BODY = "操作失败";
+    private static final String DEFAULT_FAILURE_MESSAGE = "操作失败";
 
-    private void assertDefaultFailure(Message<Integer> expected) {
+    private void assertDefaultFailure(Result<Integer> expected) {
 
         Assert.assertFalse(expected.isSuccess());
         Assert.assertTrue(expected.isFailure());
-        Assert.assertEquals(expected.getBody(), DEFAULT_FAILURE_BODY);
+        Assert.assertEquals(expected.getMessage(), DEFAULT_FAILURE_MESSAGE);
         Assert.assertEquals(expected.getCode(), DEFAULT_FAILURE_CODE);
         Assert.assertEquals(expected.getData(), null);
     }
 
-    private void assertDefaultSuccess(Message<Integer> expected) {
+    private void assertDefaultSuccess(Result<Integer> expected) {
 
         Assert.assertTrue(expected.isSuccess());
         Assert.assertFalse(expected.isFailure());
-        Assert.assertEquals(expected.getBody(), DEFAULT_SUCCESS_BODY);
+        Assert.assertEquals(expected.getMessage(), DEFAULT_SUCCESS_MESSAGE);
         Assert.assertEquals(expected.getCode(), DEFAULT_SUCCESS_CODE);
         Assert.assertEquals(expected.getData(), null);
     }
 
-    private void doAssert(Message<Integer> expected, boolean actualResult, String actualCode, String actualBody, Integer actualData) {
+    private void doAssert(Result<Integer> expected, boolean actualResult, String actualCode, String actualBody, Integer actualData) {
 
         if (actualResult) {
             Assert.assertTrue(expected.isSuccess());
@@ -53,28 +53,28 @@ public class MessageTest {
             Assert.assertFalse(expected.isSuccess());
             Assert.assertTrue(expected.isFailure());
         }
-        Assert.assertEquals(expected.getBody(), actualBody);
+        Assert.assertEquals(expected.getMessage(), actualBody);
         Assert.assertEquals(expected.getCode(), actualCode);
         Assert.assertEquals(expected.getData(), actualData);
     }
 
     @Test
     public void create() {
-        Message<Integer> expected = Message.create(false);
+        Result<Integer> expected = Result.create(false);
         assertDefaultFailure(expected);
 
-        expected = Message.create(true);
+        expected = Result.create(true);
         assertDefaultSuccess(expected);
 
         boolean actualResult = false;
         String actualCode = "1";
         String actualBody = "2";
         Integer actualData = 3;
-        expected = Message.create(actualResult, actualCode, actualBody, actualData);
+        expected = Result.create(actualResult, actualCode, actualBody, actualData);
         doAssert(expected, actualResult, actualCode, actualBody, actualData);
 
         actualResult = true;
-        expected = Message.create(actualResult, actualCode, actualBody, actualData);
+        expected = Result.create(actualResult, actualCode, actualBody, actualData);
         doAssert(expected, actualResult, actualCode, actualBody, actualData);
     }
 
@@ -84,24 +84,24 @@ public class MessageTest {
         String actualCode = "1";
         String actualBody = "2";
         Integer actualData = 3;
-        Message<Integer> expected = null;
+        Result<Integer> expected = null;
 
-        expected = Message.success();
-        doAssert(expected, actualResult, DEFAULT_SUCCESS_CODE, DEFAULT_SUCCESS_BODY, null);
+        expected = Result.success();
+        doAssert(expected, actualResult, DEFAULT_SUCCESS_CODE, DEFAULT_SUCCESS_MESSAGE, null);
 
-        expected = Message.success(actualBody);
+        expected = Result.success(actualBody);
         doAssert(expected, actualResult, DEFAULT_SUCCESS_CODE, actualBody, null);
 
-        expected = Message.success(actualData);
-        doAssert(expected, actualResult,  DEFAULT_SUCCESS_CODE, DEFAULT_SUCCESS_BODY, actualData);
+        expected = Result.success(actualData);
+        doAssert(expected, actualResult,  DEFAULT_SUCCESS_CODE, DEFAULT_SUCCESS_MESSAGE, actualData);
 
-        expected = Message.success(actualCode, actualBody);
+        expected = Result.success(actualCode, actualBody);
         doAssert(expected, actualResult, actualCode, actualBody, null);
 
-        expected = Message.success(actualBody, actualData);
+        expected = Result.success(actualBody, actualData);
         doAssert(expected, actualResult, DEFAULT_SUCCESS_CODE, actualBody, actualData);
 
-        expected = Message.success(actualCode, actualBody, actualData);
+        expected = Result.success(actualCode, actualBody, actualData);
         doAssert(expected, actualResult, actualCode, actualBody, actualData);
     }
 
@@ -112,24 +112,24 @@ public class MessageTest {
         String actualCode = "1";
         String actualBody = "2";
         Integer actualData = 3;
-        Message<Integer> expected = null;
+        Result<Integer> expected = null;
 
-        expected = Message.failure();
-        doAssert(expected, actualResult, DEFAULT_FAILURE_CODE, DEFAULT_FAILURE_BODY, null);
+        expected = Result.failure();
+        doAssert(expected, actualResult, DEFAULT_FAILURE_CODE, DEFAULT_FAILURE_MESSAGE, null);
 
-        expected = Message.failure(actualBody);
+        expected = Result.failure(actualBody);
         doAssert(expected, actualResult, DEFAULT_FAILURE_CODE, actualBody, null);
 
-        expected = Message.failure(actualData);
-        doAssert(expected, actualResult,  DEFAULT_FAILURE_CODE, DEFAULT_FAILURE_BODY, actualData);
+        expected = Result.failure(actualData);
+        doAssert(expected, actualResult,  DEFAULT_FAILURE_CODE, DEFAULT_FAILURE_MESSAGE, actualData);
 
-        expected = Message.failure(actualCode, actualBody);
+        expected = Result.failure(actualCode, actualBody);
         doAssert(expected, actualResult, actualCode, actualBody, null);
 
-        expected = Message.failure(actualBody, actualData);
+        expected = Result.failure(actualBody, actualData);
         doAssert(expected, actualResult, DEFAULT_FAILURE_CODE, actualBody, actualData);
 
-        expected = Message.failure(actualCode, actualBody, actualData);
+        expected = Result.failure(actualCode, actualBody, actualData);
         doAssert(expected, actualResult, actualCode, actualBody, actualData);
     }
 }
