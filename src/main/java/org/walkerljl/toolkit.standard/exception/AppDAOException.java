@@ -57,6 +57,17 @@ public class AppDAOException extends AppException {
     /**
      * 构造函数
      *
+     * @param code 异常码
+     * @param e 异常对象
+     */
+    public AppDAOException(ErrorCode code, Throwable e) {
+        super(code.getDescription(), e);
+        this.code = code;
+    }
+
+    /**
+     * 构造函数
+     *
      * @param message 异常消息
      * @param e 异常对象
      */
