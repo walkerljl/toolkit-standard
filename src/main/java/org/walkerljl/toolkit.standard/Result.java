@@ -216,15 +216,6 @@ public class Result<T> implements Serializable {
         return new Result<T>(false, code, message, null);
     }
 
-    /**
-     * 是否失败
-     *
-     * @return true：失败，false：成功
-     */
-    public boolean isFailure() {
-        return !isSuccess();
-    }
-
     //setters and getters
 
     /**

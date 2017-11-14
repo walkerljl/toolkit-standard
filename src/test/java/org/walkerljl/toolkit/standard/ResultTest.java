@@ -29,7 +29,6 @@ public class ResultTest {
     private void assertDefaultFailure(Result<Integer> expected) {
 
         Assert.assertFalse(expected.isSuccess());
-        Assert.assertTrue(expected.isFailure());
         Assert.assertEquals(expected.getMessage(), DEFAULT_FAILURE_MESSAGE);
         Assert.assertEquals(expected.getCode(), DEFAULT_FAILURE_CODE);
         Assert.assertEquals(expected.getData(), null);
@@ -38,7 +37,6 @@ public class ResultTest {
     private void assertDefaultSuccess(Result<Integer> expected) {
 
         Assert.assertTrue(expected.isSuccess());
-        Assert.assertFalse(expected.isFailure());
         Assert.assertEquals(expected.getMessage(), DEFAULT_SUCCESS_MESSAGE);
         Assert.assertEquals(expected.getCode(), DEFAULT_SUCCESS_CODE);
         Assert.assertEquals(expected.getData(), null);
@@ -48,10 +46,8 @@ public class ResultTest {
 
         if (actualResult) {
             Assert.assertTrue(expected.isSuccess());
-            Assert.assertFalse(expected.isFailure());
         } else {
             Assert.assertFalse(expected.isSuccess());
-            Assert.assertTrue(expected.isFailure());
         }
         Assert.assertEquals(expected.getMessage(), actualBody);
         Assert.assertEquals(expected.getCode(), actualCode);

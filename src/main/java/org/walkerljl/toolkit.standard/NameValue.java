@@ -12,8 +12,7 @@ public class NameValue<N, V> {
 	protected N name;
 	protected V value;
 
-	public NameValue() {
-	}
+	public NameValue() {}
 
 	public NameValue(N name, V value) {
 		this.name = name;
