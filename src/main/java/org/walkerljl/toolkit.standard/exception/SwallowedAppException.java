@@ -1,0 +1,104 @@
+package org.walkerljl.toolkit.standard.exception;
+
+/**
+ * 需要被吃掉的AppException
+ *
+ * @author lijunlin
+ */
+public class SwallowedAppException extends UncheckedException {
+
+    private static final long serialVersionUID = -6786549876849535944L;
+
+    /**
+     * 异常码
+     */
+    protected ErrorCode code;
+
+    /**
+     * 默认构造函数
+     */
+    public SwallowedAppException() {
+        super();
+    }
+
+    /**
+     * 构造函数
+     *
+     * @param message 消息
+     */
+    public SwallowedAppException(String message) {
+        super(message);
+    }
+
+    /**
+     * 构造函数
+     *
+     * @param e 异常对象
+     */
+    public SwallowedAppException(Throwable e) {
+        super(e);
+    }
+
+    /**
+     * 构造函数
+     *
+     * @param code 异常码
+     */
+    public SwallowedAppException(ErrorCode code) {
+        super(code.getDescription());
+        this.code = code;
+    }
+
+    /**
+     * 构造函数
+     *
+     * @param code 异常码
+     * @param message 消息
+     */
+    public SwallowedAppException(ErrorCode code, String message) {
+        super(message);
+        this.code = code;
+    }
+
+    /**
+     * 构造函数
+     *
+     * @param code 异常码
+     * @param e 异常对象
+     */
+    public SwallowedAppException(ErrorCode code, Throwable e) {
+        super(code.getDescription(), e);
+        this.code = code;
+    }
+
+    /**
+     * 构造函数
+     *
+     * @param message 异常消息
+     * @param e 异常对象
+     */
+    public SwallowedAppException(String message, Throwable e) {
+        super(message, e);
+    }
+
+    /**
+     * 构造函数
+     *
+     * @param code 异常码
+     * @param message 异常消息
+     * @param e 异常对象
+     */
+    public SwallowedAppException(ErrorCode code, String message, Throwable e) {
+        super(message, e);
+        this.code = code;
+    }
+
+    /**
+     * 获取异常码
+     *
+     * @return
+     */
+    public ErrorCode getCode() {
+        return code;
+    }
+}
