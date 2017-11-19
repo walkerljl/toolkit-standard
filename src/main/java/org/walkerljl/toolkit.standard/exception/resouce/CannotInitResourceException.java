@@ -1,6 +1,6 @@
 package org.walkerljl.toolkit.standard.exception.resouce;
 
-import org.walkerljl.toolkit.standard.exception.ErrorCode;
+import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 
 /**
  * 不能初始化资源异常

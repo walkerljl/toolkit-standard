@@ -1,7 +1,7 @@
 package org.walkerljl.toolkit.standard.exception.util;
 
 import org.walkerljl.toolkit.standard.exception.AppException;
-import org.walkerljl.toolkit.standard.exception.ErrorCode;
+import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 
 /**
  * AssertUtils
@@ -9,7 +9,7 @@ import org.walkerljl.toolkit.standard.exception.ErrorCode;
  * @author lijunlin
  * @Date 2017/10/22
  */
-public class AssertUtils {
+public class AssertUtil {
 
     /**
      * 断言表达式为真

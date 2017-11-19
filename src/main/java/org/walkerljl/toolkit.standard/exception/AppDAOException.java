@@ -1,5 +1,7 @@
 package org.walkerljl.toolkit.standard.exception;
 
+import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
+
 /**
  * 应用数据访问层异常
  *

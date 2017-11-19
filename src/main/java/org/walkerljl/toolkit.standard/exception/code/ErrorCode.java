@@ -1,4 +1,4 @@
-package org.walkerljl.toolkit.standard.exception;
+package org.walkerljl.toolkit.standard.exception.code;
 
 import org.walkerljl.toolkit.standard.enums.IEnum;
 

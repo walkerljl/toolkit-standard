@@ -1,15 +1,15 @@
 package org.walkerljl.toolkit.standard.exception.util;
 
 import org.walkerljl.toolkit.standard.exception.AppServiceException;
-import org.walkerljl.toolkit.standard.exception.ErrorCode;
+import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 
 /**
- * ServiceAssertUtils
+ * ServiceAssertUtil
  *
  * @author lijunlin
  * @Date 2017/10/22
  */
-public class ServiceAssertUtils {
+public class ServiceAssertUtil {
 
     /**
      * 断言表达式为真

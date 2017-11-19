@@ -3,6 +3,7 @@ package org.walkerljl.toolkit.standard.exception;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.walkerljl.toolkit.standard.BaseUnitTest;
+import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 
 /**
  *

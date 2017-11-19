@@ -1,6 +1,6 @@
 package org.walkerljl.toolkit.standard.exception.machine;
 
-import org.walkerljl.toolkit.standard.exception.ErrorCode;
+import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 
 /**
  * 不能停止异常

@@ -1,11 +1,13 @@
 package org.walkerljl.toolkit.standard.exception;
 
+import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
+
 /**
  * 需要被吃掉的AppException
  *
  * @author lijunlin
  */
-public class SwallowedAppException extends UncheckedException {
+public class SwallowedAppException extends AppException {
 
     private static final long serialVersionUID = -6786549876849535944L;
 

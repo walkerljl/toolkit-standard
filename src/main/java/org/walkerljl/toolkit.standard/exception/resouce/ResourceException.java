@@ -1,7 +1,7 @@
 package org.walkerljl.toolkit.standard.exception.resouce;
 
 import org.walkerljl.toolkit.standard.exception.AppException;
-import org.walkerljl.toolkit.standard.exception.ErrorCode;
+import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 
 /**
  * 资源异常

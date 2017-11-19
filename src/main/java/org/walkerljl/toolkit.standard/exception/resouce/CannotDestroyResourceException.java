@@ -1,6 +1,6 @@
 package org.walkerljl.toolkit.standard.exception.resouce;
 
-import org.walkerljl.toolkit.standard.exception.ErrorCode;
+import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 
 /**
  * 不能销毁资源异常
