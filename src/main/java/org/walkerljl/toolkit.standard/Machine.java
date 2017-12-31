@@ -7,7 +7,7 @@ import org.walkerljl.toolkit.standard.exception.machine.MachineException;
 /**
  * Machine
  *
- * @author lijunlin
+ * @author xingxun
  */
 public interface Machine extends Resource {
 

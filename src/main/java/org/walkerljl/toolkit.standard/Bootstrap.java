@@ -9,7 +9,7 @@ import org.walkerljl.toolkit.standard.exception.machine.CannotStopMachineExcepti
 /**
  * Bootstrap
  *
- * @author lijunlin
+ * @author xingxun
  * @Date 2016/12/6
  */
 public class Bootstrap extends AbstractMachine implements Machine {

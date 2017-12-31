@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * ResourceRepository
  *
- * @author lijunlin
+ * @author xingxun
  * @Date 2016/12/12
  */
 public class ResourceRepository {

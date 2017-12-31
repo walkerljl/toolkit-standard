@@ -3,35 +3,35 @@ package org.walkerljl.toolkit.standard.exception.resouce;
 import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 
 /**
- * 不能销毁资源异常
+ * Exception of resource can not destroy
  *
- * @author lijunlin
+ * @author xingxun
  */
 public class CannotDestroyResourceException extends ResourceException {
 
     private static final long serialVersionUID = -6786549876849535944L;
 
     /**
-     * 默认构造函数
+     * Constructor
      */
     public CannotDestroyResourceException() {
         super();
     }
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param message 消息
+     * @param message Message
      */
     public CannotDestroyResourceException(String message) {
         super(message);
     }
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param code 异常码
-     * @param message 消息
+     * @param code Error code
+     * @param message Message
      */
     public CannotDestroyResourceException(ErrorCode code, String message) {
         super(message);
@@ -39,30 +39,41 @@ public class CannotDestroyResourceException extends ResourceException {
     }
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param e 异常对象
+     * @param e Throable
      */
     public CannotDestroyResourceException(Throwable e) {
         super(e);
     }
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param message 异常消息
-     * @param e 异常对象
+     * @param message Message
+     * @param e Throable
      */
     public CannotDestroyResourceException(String message, Throwable e) {
         super(message, e);
     }
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param code 异常码
-     * @param message 异常消息
-     * @param e 异常对象
+     * @param code Error code
+     * @param e Throable
+     */
+    public CannotDestroyResourceException(ErrorCode code, Throwable e) {
+        super(code.getDescription(), e);
+        this.code = code;
+    }
+
+    /**
+     * Constructor
+     *
+     * @param code Error code
+     * @param message Message
+     * @param e Throable
      */
     public CannotDestroyResourceException(ErrorCode code, String message, Throwable e) {
         super(message, e);

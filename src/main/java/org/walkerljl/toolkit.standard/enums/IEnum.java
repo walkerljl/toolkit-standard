@@ -1,20 +1,21 @@
 package org.walkerljl.toolkit.standard.enums;
 
 /**
+ * Enum common interface
  *
- * @author lijunlin
+ * @author xingxun
  */
 public interface IEnum {
 
     /**
-     * 获取编码
+     * Get code
      *
      * @return
      */
     String getCode();
 
     /**
-     * 获取描述信息
+     * Get description
      *
      * @return
      */

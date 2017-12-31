@@ -4,35 +4,35 @@ import org.walkerljl.toolkit.standard.exception.AppException;
 import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 
 /**
- * Machine异常
+ * Exception of machine
  *
- * @author lijunlin
+ * @author xingxun
  */
 public class MachineException extends AppException {
 
     private static final long serialVersionUID = -6786549876849535944L;
 
     /**
-     * 默认构造函数
+     * Constructor
      */
     public MachineException() {
         super();
     }
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param message 消息
+     * @param message Message
      */
     public MachineException(String message) {
         super(message);
     }
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param code 异常码
-     * @param message 消息
+     * @param code Error code
+     * @param message Message
      */
     public MachineException(ErrorCode code, String message) {
         super(message);
@@ -40,30 +40,41 @@ public class MachineException extends AppException {
     }
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param e 异常对象
+     * @param e Throable
      */
     public MachineException(Throwable e) {
         super(e);
     }
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param message 异常消息
-     * @param e 异常对象
+     * @param message Message
+     * @param e Throable
      */
     public MachineException(String message, Throwable e) {
         super(message, e);
     }
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param code 异常码
-     * @param message 异常消息
-     * @param e 异常对象
+     * @param code Error code
+     * @param e Throable
+     */
+    public MachineException(ErrorCode code, Throwable e) {
+        super(code.getDescription(), e);
+        this.code = code;
+    }
+
+    /**
+     * Constructor
+     *
+     * @param code Error code
+     * @param message Message
+     * @param e Throable
      */
     public MachineException(ErrorCode code, String message, Throwable e) {
         super(message, e);

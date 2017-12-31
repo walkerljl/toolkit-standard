@@ -3,7 +3,7 @@ package org.walkerljl.toolkit.standard;
 /**
  * Simple name-value holder.
  *
- * @author lijunlin
+ * @author xingxun
  * @param <N>
  * @param <V>
  */

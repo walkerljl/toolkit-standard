@@ -2,6 +2,7 @@ package org.walkerljl.toolkit.standard.exception.util;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.walkerljl.toolkit.standard.util.AssertUtils;
 import org.walkerljl.toolkit.standard.BaseUnitTest;
 import org.walkerljl.toolkit.standard.exception.AppException;
 import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
@@ -29,13 +30,13 @@ public class AssertUtilsTest extends BaseUnitTest {
         };
         String message = "message";
 
-        AssertUtil.assertTrue(true, errorCode, message);
-        AssertUtil.assertTrue(true, errorCode);
-        AssertUtil.assertTrue(true, message);
+        AssertUtils.assertTrue(true, errorCode, message);
+        AssertUtils.assertTrue(true, errorCode);
+        AssertUtils.assertTrue(true, message);
 
         boolean result = false;
         try {
-            AssertUtil.assertTrue(false, errorCode, message);
+            AssertUtils.assertTrue(false, errorCode, message);
         } catch (AppException e) {
             if (message.equals(e.getMessage())
                     && errorCode.getCode().equals(e.getCode().getCode())
@@ -47,7 +48,7 @@ public class AssertUtilsTest extends BaseUnitTest {
         result = false;
 
         try {
-            AssertUtil.assertTrue(false, errorCode);
+            AssertUtils.assertTrue(false, errorCode);
         } catch (AppException e) {
             if (errorCode.getDescription().equals(e.getMessage())
                     && errorCode.getCode().equals(e.getCode().getCode())
@@ -59,7 +60,7 @@ public class AssertUtilsTest extends BaseUnitTest {
         result = false;
 
         try {
-            AssertUtil.assertTrue(false, message);
+            AssertUtils.assertTrue(false, message);
         } catch (AppException e) {
             if (message.equals(e.getMessage())
             && e.getCode() == null) {

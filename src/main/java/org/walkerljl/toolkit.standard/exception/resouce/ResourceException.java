@@ -4,35 +4,35 @@ import org.walkerljl.toolkit.standard.exception.AppException;
 import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 
 /**
- * 资源异常
+ * Exception of resource
  *
- * @author lijunlin
+ * @author xingxun
  */
 public class ResourceException extends AppException {
 
     private static final long serialVersionUID = -6786549876849535944L;
 
     /**
-     * 默认构造函数
+     * Constructor
      */
     public ResourceException() {
         super();
     }
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param message 消息
+     * @param message Message
      */
     public ResourceException(String message) {
         super(message);
     }
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param code 异常码
-     * @param message 消息
+     * @param code Error code
+     * @param message Message
      */
     public ResourceException(ErrorCode code, String message) {
         super(message);
@@ -40,30 +40,41 @@ public class ResourceException extends AppException {
     }
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param e 异常对象
+     * @param e Throable
      */
     public ResourceException(Throwable e) {
         super(e);
     }
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param message 异常消息
-     * @param e 异常对象
+     * @param message Message
+     * @param e Throable
      */
     public ResourceException(String message, Throwable e) {
         super(message, e);
     }
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param code 异常码
-     * @param message 异常消息
-     * @param e 异常对象
+     * @param code Error code
+     * @param e Throable
+     */
+    public ResourceException(ErrorCode code, Throwable e) {
+        super(code.getDescription(), e);
+        this.code = code;
+    }
+
+    /**
+     * Constructor
+     *
+     * @param code Error code
+     * @param message Message
+     * @param e Throable
      */
     public ResourceException(ErrorCode code, String message, Throwable e) {
         super(message, e);

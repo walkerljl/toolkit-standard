@@ -3,7 +3,7 @@ package org.walkerljl.toolkit.standard;
 /**
  * Describe one kind of object which has id,name and group
  *
- * @author: lijunlin
+ * @author: xingxun
  */
 public interface Identifer {
 

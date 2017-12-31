@@ -3,35 +3,35 @@ package org.walkerljl.toolkit.standard.exception.machine;
 import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 
 /**
- * 不能启动异常
+ * Exception of machine can not start
  *
- * @author lijunlin
+ * @author xingxun
  */
 public class CannotStartMachineException extends MachineException {
 
     private static final long serialVersionUID = -6786549876849535944L;
 
     /**
-     * 默认构造函数
+     * Constructor
      */
     public CannotStartMachineException() {
         super();
     }
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param message 消息
+     * @param message Message
      */
     public CannotStartMachineException(String message) {
         super(message);
     }
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param code 异常码
-     * @param message 消息
+     * @param code Error code
+     * @param message Message
      */
     public CannotStartMachineException(ErrorCode code, String message) {
         super(message);
@@ -39,30 +39,41 @@ public class CannotStartMachineException extends MachineException {
     }
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param e 异常对象
+     * @param e Throable
      */
     public CannotStartMachineException(Throwable e) {
         super(e);
     }
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param message 异常消息
-     * @param e 异常对象
+     * @param message Message
+     * @param e Throable
      */
     public CannotStartMachineException(String message, Throwable e) {
         super(message, e);
     }
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param code 异常码
-     * @param message 异常消息
-     * @param e 异常对象
+     * @param code Error code
+     * @param e Throable
+     */
+    public CannotStartMachineException(ErrorCode code, Throwable e) {
+        super(code.getDescription(), e);
+        this.code = code;
+    }
+
+    /**
+     * Constructor
+     *
+     * @param code Error code
+     * @param message Message
+     * @param e Throable
      */
     public CannotStartMachineException(ErrorCode code, String message, Throwable e) {
         super(message, e);

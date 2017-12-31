@@ -6,7 +6,7 @@ import org.walkerljl.toolkit.standard.exception.resouce.CannotInitResourceExcept
 /**
  * Describe one kind of resource which can init and destroy.
  *
- * @author: lijunlin
+ * @author: xingxun
  */
 public interface Resource extends Identifer {
 

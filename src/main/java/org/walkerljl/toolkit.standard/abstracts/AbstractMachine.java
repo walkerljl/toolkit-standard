@@ -13,7 +13,7 @@ import org.walkerljl.toolkit.standard.support.MachineRepository;
 /**
  * AbstractMachine
  *
- * @author lijunlin
+ * @author xingxun
  * @Date 2016/12/9
  */
 public abstract class AbstractMachine implements Machine {
@@ -210,7 +210,7 @@ public abstract class AbstractMachine implements Machine {
     }
 
     /**
-     * 获取服务名称
+     * Get service name
      *
      * @return
      */

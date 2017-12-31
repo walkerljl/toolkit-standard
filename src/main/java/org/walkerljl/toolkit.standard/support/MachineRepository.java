@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * MachineRepository
  *
- * @author lijunlin
+ * @author xingxun
  * @Date 2016/12/12
  */
 public class MachineRepository {

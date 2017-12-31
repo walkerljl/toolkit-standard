@@ -10,7 +10,7 @@ import org.walkerljl.toolkit.standard.support.ResourceRepository;
 /**
  * AbstractResource
  *
- * @author lijunlin
+ * @author xingxun
  * @Date 2016/12/9
  */
 public abstract class AbstractResource implements Resource {
@@ -78,7 +78,7 @@ public abstract class AbstractResource implements Resource {
     }
 
     /**
-     * 获取服务名称
+     * Get service name
      *
      * @return
      */

@@ -5,23 +5,23 @@ import org.walkerljl.toolkit.standard.enums.IEnum;
 /**
  * App error code
  *
- * @author lijunlin
+ * @author xingxun
  */
 public enum AppErrorCode implements IEnum {
 
 
     ;
 
-    /** 编码*/
+    /** Code*/
     private String code;
-    /** 描述*/
+    /** Description*/
     private String description;
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param code 编码
-     * @param description 描述
+     * @param code Code
+     * @param description Description
      */
     AppErrorCode(String code, String description) {
         this.code = code;
@@ -29,9 +29,9 @@ public enum AppErrorCode implements IEnum {
     }
 
     /**
-     * 根据编码获取枚举对象
+     * Get by code
      *
-     * @param code 编码
+     * @param code Code
      * @return
      */
     public static AppErrorCode getByCode(String code) {

@@ -17,7 +17,7 @@ import java.io.Serializable;
  * result.getMessage();//获取消息体,如：操作成功，操作失败<br/>
  * result.getCode();//获取消息响应码,如：200,404,500等，默认成功：200，失败：500<br/>
  *
- * @author lijunlin
+ * @author xingxun
  */
 public class Result<T> implements Serializable {
 
