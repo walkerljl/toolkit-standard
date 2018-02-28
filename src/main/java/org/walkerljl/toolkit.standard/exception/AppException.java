@@ -5,7 +5,7 @@ import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 /**
  * 应用异常
  *
- * @author lijunlin
+ * @author xingxun
  */
 public class AppException extends UncheckedException {
 

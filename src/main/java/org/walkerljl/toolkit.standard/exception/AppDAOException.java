@@ -5,7 +5,7 @@ import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 /**
  * 应用数据访问层异常
  *
- * @author lijunlin
+ * @author xingxun
  */
 public class AppDAOException extends AppException {
 

@@ -3,7 +3,7 @@ package org.walkerljl.toolkit.standard.exception;
 /**
  * 非检查型异常
  *
- * @author lijunlin
+ * @author xingxun
  */
 public class UncheckedException extends RuntimeException {
 

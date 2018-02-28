@@ -5,7 +5,7 @@ import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 /**
  * 需要被吃掉的AppException
  *
- * @author lijunlin
+ * @author xingxun
  */
 public class SwallowedAppException extends AppException {
 

@@ -5,7 +5,7 @@ import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 /**
  * 应用业务逻辑异常
  *
- * @author lijunlin
+ * @author xingxun
  */
 public class AppServiceException extends AppException {
 
