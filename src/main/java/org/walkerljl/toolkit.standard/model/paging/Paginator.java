@@ -7,12 +7,12 @@ import org.walkerljl.toolkit.standard.model.BaseEntity;
 /**
  * 分页器
  *
- * @author lijunlin
+ * @author xingxun
  */
 public class Paginator<T> extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
-    
+
     /** 默认每页最多数据条数*/
     public static final int DEFAULT_MAX_PAGE_SIZE = 200;
     /** 默认每页最少数据条数*/
@@ -37,10 +37,21 @@ public class Paginator<T> extends BaseEntity {
     /**
      * 构造函数
      *
-     * @param currentPage 当面页码
+     * @param pageSize 每页数据条数
      */
-    public Paginator(int currentPage) {
-        setCurrentPage(currentPage);
+    public Paginator(int pageSize) {
+        this(1, pageSize, 0);
+    }
+
+    /**
+     * 构造函数
+     *
+     * @param paginator 指定的分页器
+     * @param <E>
+     */
+    public <E> Paginator(Paginator<E> paginator) {
+        this(paginator.getCurrentPage(), paginator.getPageSize(), paginator.getTotalCount());
+        setQueryTotalCount(paginator.isQueryTotalCount());
     }
 
     /**
@@ -50,8 +61,20 @@ public class Paginator<T> extends BaseEntity {
      * @param pageSize 每页数据条数
      */
     public Paginator(int currentPage, int pageSize) {
+        this(currentPage, pageSize, 0);
+    }
+
+    /**
+     * 构造函数
+     *
+     * @param currentPage 当前页码
+     * @param pageSize 每页数据条数
+     * @param totalCount 总的数据条数
+     */
+    public Paginator(int currentPage, int pageSize, int totalCount) {
         setCurrentPage(currentPage);
         setPageSize(pageSize);
+        setTotalCount(totalCount);
     }
 
     /**
@@ -108,6 +131,16 @@ public class Paginator<T> extends BaseEntity {
         return isFirstPage() ? 1 : getCurrentPage() - 1;
     }
 
+    /**
+     * 增加页码
+     *
+     * @param increment 增量
+     */
+    public void incrementPage(int increment) {
+        setCurrentPage(getCurrentPage() + increment);
+    }
+
+    //getter and setters
     /**
      * 获取当前页页码
      *
@@ -228,5 +261,10 @@ public class Paginator<T> extends BaseEntity {
      */
     public void setQueryTotalCount(boolean queryTotalCount) {
         this.queryTotalCount = queryTotalCount;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

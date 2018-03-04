@@ -32,6 +32,15 @@ public class Result<T> implements Serializable {
     /** 默认失败消息*/
     public static final String DEFAULT_FAILURE_MESSAGE = "操作失败";
 
+    /** 字段Key：编码*/
+    public static final String CODE_KEY = "code";
+    /** 字段Key：消息*/
+    public static final String MESSAGE_KEY = "message";
+    /** 字段Key：结果*/
+    public static final String RESULT_KEY = "success";
+    /** 字段Key：数据*/
+    public static final String DATA_KEY = "data";
+
     /** 是否成功*/
     private boolean success = true;
     /** 结果码*/
