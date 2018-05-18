@@ -4,8 +4,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
+ * ResultTest
  *
- * @author lijunlin
+ * @author xingxun
  */
 public class ResultTest {
 
@@ -78,54 +79,54 @@ public class ResultTest {
     public void success() {
         boolean actualResult = true;
         String actualCode = "1";
-        String actualBody = "2";
+        String actualMessage = "2";
         Integer actualData = 3;
         Result<Integer> expected = null;
 
         expected = Result.success();
         doAssert(expected, actualResult, DEFAULT_SUCCESS_CODE, DEFAULT_SUCCESS_MESSAGE, null);
 
-        expected = Result.success(actualBody);
-        doAssert(expected, actualResult, DEFAULT_SUCCESS_CODE, actualBody, null);
+        expected = Result.success(actualMessage);
+        doAssert(expected, actualResult, DEFAULT_SUCCESS_CODE, actualMessage, null);
 
         expected = Result.success(actualData);
         doAssert(expected, actualResult,  DEFAULT_SUCCESS_CODE, DEFAULT_SUCCESS_MESSAGE, actualData);
 
-        expected = Result.success(actualCode, actualBody);
-        doAssert(expected, actualResult, actualCode, actualBody, null);
+        expected = Result.success(actualCode, actualMessage);
+        doAssert(expected, actualResult, actualCode, actualMessage, null);
 
-        expected = Result.success(actualBody, actualData);
-        doAssert(expected, actualResult, DEFAULT_SUCCESS_CODE, actualBody, actualData);
+        expected = Result.success(actualMessage, actualData);
+        doAssert(expected, actualResult, DEFAULT_SUCCESS_CODE, actualMessage, actualData);
 
-        expected = Result.success(actualCode, actualBody, actualData);
-        doAssert(expected, actualResult, actualCode, actualBody, actualData);
+        expected = Result.success(actualCode, actualMessage, actualData);
+        doAssert(expected, actualResult, actualCode, actualMessage, actualData);
     }
 
     @Test
-    public void failue() {
+    public void failure() {
 
         boolean actualResult = false;
         String actualCode = "1";
-        String actualBody = "2";
+        String actualMessage = "2";
         Integer actualData = 3;
         Result<Integer> expected = null;
 
         expected = Result.failure();
         doAssert(expected, actualResult, DEFAULT_FAILURE_CODE, DEFAULT_FAILURE_MESSAGE, null);
 
-        expected = Result.failure(actualBody);
-        doAssert(expected, actualResult, DEFAULT_FAILURE_CODE, actualBody, null);
+        expected = Result.failure(actualMessage);
+        doAssert(expected, actualResult, DEFAULT_FAILURE_CODE, actualMessage, null);
 
         expected = Result.failure(actualData);
         doAssert(expected, actualResult,  DEFAULT_FAILURE_CODE, DEFAULT_FAILURE_MESSAGE, actualData);
 
-        expected = Result.failure(actualCode, actualBody);
-        doAssert(expected, actualResult, actualCode, actualBody, null);
+        expected = Result.failure(actualCode, actualMessage);
+        doAssert(expected, actualResult, actualCode, actualMessage, null);
 
-        expected = Result.failure(actualBody, actualData);
-        doAssert(expected, actualResult, DEFAULT_FAILURE_CODE, actualBody, actualData);
+        expected = Result.failure(actualMessage, actualData);
+        doAssert(expected, actualResult, DEFAULT_FAILURE_CODE, actualMessage, actualData);
 
-        expected = Result.failure(actualCode, actualBody, actualData);
-        doAssert(expected, actualResult, actualCode, actualBody, actualData);
+        expected = Result.failure(actualCode, actualMessage, actualData);
+        doAssert(expected, actualResult, actualCode, actualMessage, actualData);
     }
 }

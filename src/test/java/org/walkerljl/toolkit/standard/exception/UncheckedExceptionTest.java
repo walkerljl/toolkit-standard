@@ -5,8 +5,9 @@ import org.testng.annotations.Test;
 import org.walkerljl.toolkit.standard.BaseUnitTest;
 
 /**
- *
- * @author lijunlin
+ * AppExceptionTest
+ * 
+ * @author xingxun
  */
 public class UncheckedExceptionTest extends BaseUnitTest {
 

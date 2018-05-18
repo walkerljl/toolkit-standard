@@ -6,8 +6,9 @@ import org.walkerljl.toolkit.standard.BaseUnitTest;
 import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 
 /**
+ * AppExceptionTest
  *
- * @author lijunlin
+ * @author xingxun
  */
 public class AppServiceExceptionTest extends BaseUnitTest {
 

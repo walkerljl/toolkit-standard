@@ -5,15 +5,16 @@ import org.testng.annotations.Test;
 import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 
 /**
+ * AppExceptionTest
  *
- * @author lijunlin
+ * @author xingxun
  */
 public class AppExceptionTest {
 
     @Test
     public void test() {
 
-        ErrorCode actualErrorCode = new ErrorCode() {
+        ErrorCode expectedErrorCode = new ErrorCode() {
             @Override
             public String getCode() {
                 return "code";
@@ -25,32 +26,42 @@ public class AppExceptionTest {
             }
         };
 
-        String actualErrorMsg = "errorMsg";
-        AppException expected = new AppException();
-        Assert.assertNull(expected.getCode());
+        String expectedErrorMsg = "errorMsg";
+        AppException actual = new AppException();
+        Assert.assertNull(actual.getCode());
+        Assert.assertNull(actual.getMessage());
 
-        expected = new AppException(actualErrorMsg);
-        Assert.assertEquals(expected.getMessage(), actualErrorMsg);
+        actual = new AppException(expectedErrorMsg);
+        Assert.assertNull(actual.getCode());
+        Assert.assertEquals(actual.getMessage(), expectedErrorMsg);
 
-        Exception actualException = new RuntimeException();
-        expected = new AppException(actualException);
-        Assert.assertTrue(actualException == expected.getCause());
+        Throwable expectedThrowable = new RuntimeException();
+        actual = new AppException(expectedThrowable);
+        Assert.assertNull(actual.getCode());
+        Assert.assertEquals(actual.getCause(), expectedThrowable);
 
-        expected = new AppException(actualErrorCode);
-        Assert.assertTrue(expected.getCode() == actualErrorCode);
+        actual = new AppException(expectedErrorCode);
+        Assert.assertEquals(actual.getCode(), expectedErrorCode);
+        Assert.assertEquals(actual.getMessage(), expectedErrorCode.getDescription());
 
-        expected = new AppException(actualErrorCode, actualErrorMsg);
-        Assert.assertEquals(expected.getMessage(), actualErrorMsg);
-        Assert.assertTrue(expected.getCode() == actualErrorCode);
+        actual = new AppException(expectedErrorCode, expectedErrorMsg);
+        Assert.assertEquals(actual.getMessage(), expectedErrorMsg);
+        Assert.assertEquals(actual.getCode(), expectedErrorCode);
 
-        expected = new AppException(actualErrorMsg, actualException);
-        Assert.assertEquals(expected.getMessage(), actualErrorMsg);
-        Assert.assertTrue(actualException == expected.getCause());
+        actual = new AppException(expectedErrorCode, expectedThrowable);
+        Assert.assertEquals(actual.getMessage(), expectedErrorCode.getDescription());
+        Assert.assertEquals(actual.getCode(), expectedErrorCode);
+        Assert.assertEquals(actual.getCause(), expectedThrowable);
 
-        expected = new AppException(actualErrorCode, actualErrorMsg, actualException);
-        Assert.assertTrue(expected.getCode() == actualErrorCode);
-        Assert.assertEquals(expected.getMessage(), actualErrorMsg);
-        Assert.assertTrue(actualException == expected.getCause());
+        actual = new AppException(expectedErrorMsg, expectedThrowable);
+        Assert.assertEquals(actual.getMessage(), expectedErrorCode.getDescription());
+        Assert.assertNull(actual.getCode());
+        Assert.assertEquals(actual.getCause(), expectedThrowable);
+
+        actual = new AppException(expectedErrorCode, expectedErrorMsg, expectedThrowable);
+        Assert.assertEquals(actual.getMessage(), expectedErrorCode.getDescription());
+        Assert.assertEquals(actual.getCause(), expectedThrowable);
+        Assert.assertEquals(actual.getCause(), expectedThrowable);
     }
 
 }

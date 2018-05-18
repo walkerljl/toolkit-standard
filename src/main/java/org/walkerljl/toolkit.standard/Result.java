@@ -3,7 +3,7 @@ package org.walkerljl.toolkit.standard;
 import java.io.Serializable;
 
 /**
- * 消息对象
+ * 结果对象
  *
  * <p>
  * 使用说明：<br/>
