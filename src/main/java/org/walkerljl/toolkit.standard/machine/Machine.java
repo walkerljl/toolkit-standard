@@ -1,67 +1,68 @@
-package org.walkerljl.toolkit.standard;
+package org.walkerljl.toolkit.standard.machine;
 
-import org.walkerljl.toolkit.standard.exception.machine.CannotStartMachineException;
-import org.walkerljl.toolkit.standard.exception.machine.CannotStopMachineException;
-import org.walkerljl.toolkit.standard.exception.machine.MachineException;
+import org.walkerljl.toolkit.standard.resource.Resource;
+import org.walkerljl.toolkit.standard.machine.exception.CannotStartMachineException;
+import org.walkerljl.toolkit.standard.machine.exception.CannotStopMachineException;
+import org.walkerljl.toolkit.standard.machine.exception.MachineException;
 
 /**
- * Machine
+ * 机器
  *
  * @author xingxun
  */
 public interface Machine extends Resource {
 
     /**
-     * Start
+     * 启动
      *
      * @throws CannotStartMachineException
      */
     void start() throws CannotStartMachineException;
 
     /**
-     * Callback when success to start.
+     * 启动成功时的回调函数
      *
      * @throws MachineException
      */
     void callbackOnSuccessToStart() throws MachineException;
 
     /**
-     * Run
-     *
-     * @throws MachineException
-     */
-    void run() throws MachineException;
-
-    /**
-     * Callback when failure to start.
+     * 启动失败时的回调函数
      *
      * @throws MachineException
      */
     void callbackOnFailureToStart() throws MachineException;
 
     /**
-     * Stop
+     * 运行
+     *
+     * @throws MachineException
+     */
+    void run() throws MachineException;
+
+    /**
+     * 停止
      *
      * @throws CannotStopMachineException
      */
     void stop() throws CannotStopMachineException;
 
     /**
-     * Callback when success to stop.
+     * 停止成功时回调
      *
      * @throws MachineException
      */
     void callbackOnSuccessToStop() throws MachineException;
 
     /**
-     * Callback when failure to stop.
+     * 停止失败时回调
      *
      * @throws MachineException
      */
     void callbackOnFailureToStop() throws MachineException;
 
     /**
-     * Stop and start.
+     * 重启，先停止，然后启动
      *
      * @throws CannotStartMachineException
      * @throws CannotStopMachineException
@@ -69,9 +70,9 @@ public interface Machine extends Resource {
     void restart() throws CannotStartMachineException, CannotStopMachineException;
 
     /**
-     * Check is running.
+     * 判断是否正在运行中
      *
-     * @return true:is runing.
+     * @return true：运行中，false：未运行
      */
     boolean isRunning();
 }

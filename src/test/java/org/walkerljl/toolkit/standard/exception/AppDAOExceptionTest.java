@@ -5,15 +5,16 @@ import org.testng.annotations.Test;
 import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 
 /**
+ * AppDAOExceptionTest
  *
- * @author lijunlin
+ * @author xingxun
  */
 public class AppDAOExceptionTest {
 
     @Test
     public void test() {
 
-        ErrorCode actualErrorCode = new ErrorCode() {
+        ErrorCode expectedErrorCode = new ErrorCode() {
             @Override
             public String getCode() {
                 return "code";
@@ -25,32 +26,42 @@ public class AppDAOExceptionTest {
             }
         };
 
-        String actualErrorMsg = "errorMsg";
-        AppDAOException expected = new AppDAOException();
-        Assert.assertNull(expected.getCode());
+        String expectedErrorMsg = "errorMsg";
+        AppDAOException actual = new AppDAOException();
+        Assert.assertNull(actual.getCode());
+        Assert.assertNull(actual.getMessage());
 
-        expected = new AppDAOException(actualErrorMsg);
-        Assert.assertEquals(expected.getMessage(), actualErrorMsg);
+        actual = new AppDAOException(expectedErrorMsg);
+        Assert.assertNull(actual.getCode());
+        Assert.assertEquals(actual.getMessage(), expectedErrorMsg);
 
-        Exception actualException = new RuntimeException();
-        expected = new AppDAOException(actualException);
-        Assert.assertTrue(actualException == expected.getCause());
+        Throwable expectedThrowable = new RuntimeException();
+        actual = new AppDAOException(expectedThrowable);
+        Assert.assertNull(actual.getCode());
+        Assert.assertEquals(actual.getCause(), expectedThrowable);
 
-        expected = new AppDAOException(actualErrorCode);
-        Assert.assertTrue(expected.getCode() == actualErrorCode);
+        actual = new AppDAOException(expectedErrorCode);
+        Assert.assertEquals(actual.getCode(), expectedErrorCode);
+        Assert.assertEquals(actual.getMessage(), expectedErrorCode.getDescription());
 
-        expected = new AppDAOException(actualErrorCode, actualErrorMsg);
-        Assert.assertEquals(expected.getMessage(), actualErrorMsg);
-        Assert.assertTrue(expected.getCode() == actualErrorCode);
+        actual = new AppDAOException(expectedErrorCode, expectedErrorMsg);
+        Assert.assertEquals(actual.getMessage(), expectedErrorMsg);
+        Assert.assertEquals(actual.getCode(), expectedErrorCode);
 
-        expected = new AppDAOException(actualErrorMsg, actualException);
-        Assert.assertEquals(expected.getMessage(), actualErrorMsg);
-        Assert.assertTrue(actualException == expected.getCause());
+        actual = new AppDAOException(expectedErrorCode, expectedThrowable);
+        Assert.assertEquals(actual.getMessage(), expectedErrorCode.getDescription());
+        Assert.assertEquals(actual.getCode(), expectedErrorCode);
+        Assert.assertEquals(actual.getCause(), expectedThrowable);
 
-        expected = new AppDAOException(actualErrorCode, actualErrorMsg, actualException);
-        Assert.assertTrue(expected.getCode() == actualErrorCode);
-        Assert.assertEquals(expected.getMessage(), actualErrorMsg);
-        Assert.assertTrue(actualException == expected.getCause());
+        actual = new AppDAOException(expectedErrorMsg, expectedThrowable);
+        Assert.assertEquals(actual.getMessage(), expectedErrorMsg);
+        Assert.assertNull(actual.getCode());
+        Assert.assertEquals(actual.getCause(), expectedThrowable);
+
+        actual = new AppDAOException(expectedErrorCode, expectedErrorMsg, expectedThrowable);
+        Assert.assertEquals(actual.getMessage(), expectedErrorMsg);
+        Assert.assertEquals(actual.getCode(), expectedErrorCode);
+        Assert.assertEquals(actual.getCause(), expectedThrowable);
 
     }
 }

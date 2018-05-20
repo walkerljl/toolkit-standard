@@ -1,15 +1,16 @@
-package org.walkerljl.toolkit.standard.exception;
+package org.walkerljl.toolkit.standard.machine.exception;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 
 /**
- * AppExceptionTest
+ * CannotStartMachineExceptionTest
  *
  * @author xingxun
+ * @Date 2018/5/18
  */
-public class AppExceptionTest {
+public class CannotStartMachineExceptionTest {
 
     @Test
     public void test() {
@@ -27,41 +28,41 @@ public class AppExceptionTest {
         };
 
         String expectedErrorMsg = "errorMsg";
-        AppException actual = new AppException();
+        CannotStartMachineException actual = new CannotStartMachineException();
         Assert.assertNull(actual.getCode());
         Assert.assertNull(actual.getMessage());
 
-        actual = new AppException(expectedErrorMsg);
+        actual = new CannotStartMachineException(expectedErrorMsg);
         Assert.assertNull(actual.getCode());
         Assert.assertEquals(actual.getMessage(), expectedErrorMsg);
 
         Throwable expectedThrowable = new RuntimeException();
-        actual = new AppException(expectedThrowable);
+        actual = new CannotStartMachineException(expectedThrowable);
         Assert.assertNull(actual.getCode());
         Assert.assertEquals(actual.getCause(), expectedThrowable);
 
-        actual = new AppException(expectedErrorCode);
+        actual = new CannotStartMachineException(expectedErrorCode);
         Assert.assertEquals(actual.getCode(), expectedErrorCode);
         Assert.assertEquals(actual.getMessage(), expectedErrorCode.getDescription());
 
-        actual = new AppException(expectedErrorCode, expectedErrorMsg);
+        actual = new CannotStartMachineException(expectedErrorCode, expectedErrorMsg);
         Assert.assertEquals(actual.getMessage(), expectedErrorMsg);
         Assert.assertEquals(actual.getCode(), expectedErrorCode);
 
-        actual = new AppException(expectedErrorCode, expectedThrowable);
+        actual = new CannotStartMachineException(expectedErrorCode, expectedThrowable);
         Assert.assertEquals(actual.getMessage(), expectedErrorCode.getDescription());
         Assert.assertEquals(actual.getCode(), expectedErrorCode);
         Assert.assertEquals(actual.getCause(), expectedThrowable);
 
-        actual = new AppException(expectedErrorMsg, expectedThrowable);
+        actual = new CannotStartMachineException(expectedErrorMsg, expectedThrowable);
         Assert.assertEquals(actual.getMessage(), expectedErrorMsg);
         Assert.assertNull(actual.getCode());
         Assert.assertEquals(actual.getCause(), expectedThrowable);
 
-        actual = new AppException(expectedErrorCode, expectedErrorMsg, expectedThrowable);
+        actual = new CannotStartMachineException(expectedErrorCode, expectedErrorMsg, expectedThrowable);
         Assert.assertEquals(actual.getMessage(), expectedErrorMsg);
         Assert.assertEquals(actual.getCode(), expectedErrorCode);
         Assert.assertEquals(actual.getCause(), expectedThrowable);
+
     }
-
 }

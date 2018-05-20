@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import org.walkerljl.toolkit.standard.BaseUnitTest;
 
 /**
- * AppExceptionTest
+ * UncheckedExceptionTest
  * 
  * @author xingxun
  */
@@ -14,19 +14,20 @@ public class UncheckedExceptionTest extends BaseUnitTest {
     @Test
     public void test() {
 
-        String errorMsg = "errorMsg";
-        UncheckedException expected = new UncheckedException();
-        //Assert.assertTrue(expected.getCause() == expected);
+        String expectedErrorMsg = "errorMsg";
+        UncheckedException actual = new UncheckedException();
+        Assert.assertNull(actual.getMessage());
+        Assert.assertNull(actual.getCause());
 
-        expected = new UncheckedException(errorMsg);
-        Assert.assertEquals(expected.getMessage(), errorMsg);
+        actual = new UncheckedException(expectedErrorMsg);
+        Assert.assertEquals(actual.getMessage(), expectedErrorMsg);
 
-        Exception actualException = new RuntimeException();
-        expected = new UncheckedException(actualException);
-        Assert.assertTrue(actualException == expected.getCause());
+        Throwable expectedThrowable = new RuntimeException();
+        actual = new UncheckedException(expectedThrowable);
+        Assert.assertEquals(actual.getCause(), expectedThrowable);
 
-        expected = new UncheckedException(errorMsg, actualException);
-        Assert.assertEquals(expected.getMessage(), errorMsg);
-        Assert.assertTrue(actualException == expected.getCause());
+        actual = new UncheckedException(expectedErrorMsg, expectedThrowable);
+        Assert.assertEquals(actual.getMessage(), expectedErrorMsg);
+        Assert.assertEquals(actual.getCause(), expectedThrowable);
     }
 }

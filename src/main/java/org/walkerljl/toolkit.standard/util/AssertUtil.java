@@ -1,50 +1,53 @@
-package org.walkerljl.toolkit.standard.exception.util;
+package org.walkerljl.toolkit.standard.util;
 
-import org.walkerljl.toolkit.standard.exception.AppServiceException;
+import org.walkerljl.toolkit.standard.exception.AppException;
 import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 
 /**
- * ServiceAssertUtil
+ * AssertUtils
  *
- * @author xingxun
+ * @author lijunlin
  * @Date 2017/10/22
  */
-public class ServiceAssertUtil {
+public class AssertUtil {
 
     /**
-     * 断言为真
+     * 断言表达式为真
      *
      * @param expression 表达式
-     * @param message 消息
+     * @param message 错误消息
      */
     public static void assertTrue(boolean expression, String message) {
-        if (!expression) {
-            throw new AppServiceException(message);
+        if (expression) {
+            return;
         }
+        throw new AppException(message);
     }
 
     /**
-     * 断言为真
+     * 断言表达式为真
      *
      * @param expression 表达式
      * @param errorCode 错误码
      */
     public static void assertTrue(boolean expression, ErrorCode errorCode) {
-        if (!expression) {
-            throw new AppServiceException(errorCode);
+        if (expression) {
+            return;
         }
+        throw new AppException(errorCode);
     }
 
     /**
-     * 断言为真
+     * 断言表达式为真
      *
      * @param expression 表达式
      * @param errorCode 错误码
-     * @param message 消息
+     * @param message 异常消息
      */
     public static void assertTrue(boolean expression, ErrorCode errorCode, String message) {
-        if (!expression) {
-            throw new AppServiceException(errorCode, message);
+        if (expression) {
+            return;
         }
+        throw new AppException(errorCode, message);
     }
 }

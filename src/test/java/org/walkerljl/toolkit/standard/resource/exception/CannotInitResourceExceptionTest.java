@@ -1,15 +1,16 @@
-package org.walkerljl.toolkit.standard.exception;
+package org.walkerljl.toolkit.standard.resource.exception;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 
 /**
- * AppExceptionTest
+ * CannotInitResourceExceptionTest
  *
  * @author xingxun
+ * @Date 2018/5/18
  */
-public class AppExceptionTest {
+public class CannotInitResourceExceptionTest {
 
     @Test
     public void test() {
@@ -27,41 +28,41 @@ public class AppExceptionTest {
         };
 
         String expectedErrorMsg = "errorMsg";
-        AppException actual = new AppException();
+        CannotInitResourceException actual = new CannotInitResourceException();
         Assert.assertNull(actual.getCode());
         Assert.assertNull(actual.getMessage());
 
-        actual = new AppException(expectedErrorMsg);
+        actual = new CannotInitResourceException(expectedErrorMsg);
         Assert.assertNull(actual.getCode());
         Assert.assertEquals(actual.getMessage(), expectedErrorMsg);
 
         Throwable expectedThrowable = new RuntimeException();
-        actual = new AppException(expectedThrowable);
+        actual = new CannotInitResourceException(expectedThrowable);
         Assert.assertNull(actual.getCode());
         Assert.assertEquals(actual.getCause(), expectedThrowable);
 
-        actual = new AppException(expectedErrorCode);
+        actual = new CannotInitResourceException(expectedErrorCode);
         Assert.assertEquals(actual.getCode(), expectedErrorCode);
         Assert.assertEquals(actual.getMessage(), expectedErrorCode.getDescription());
 
-        actual = new AppException(expectedErrorCode, expectedErrorMsg);
+        actual = new CannotInitResourceException(expectedErrorCode, expectedErrorMsg);
         Assert.assertEquals(actual.getMessage(), expectedErrorMsg);
         Assert.assertEquals(actual.getCode(), expectedErrorCode);
 
-        actual = new AppException(expectedErrorCode, expectedThrowable);
+        actual = new CannotInitResourceException(expectedErrorCode, expectedThrowable);
         Assert.assertEquals(actual.getMessage(), expectedErrorCode.getDescription());
         Assert.assertEquals(actual.getCode(), expectedErrorCode);
         Assert.assertEquals(actual.getCause(), expectedThrowable);
 
-        actual = new AppException(expectedErrorMsg, expectedThrowable);
+        actual = new CannotInitResourceException(expectedErrorMsg, expectedThrowable);
         Assert.assertEquals(actual.getMessage(), expectedErrorMsg);
         Assert.assertNull(actual.getCode());
         Assert.assertEquals(actual.getCause(), expectedThrowable);
 
-        actual = new AppException(expectedErrorCode, expectedErrorMsg, expectedThrowable);
+        actual = new CannotInitResourceException(expectedErrorCode, expectedErrorMsg, expectedThrowable);
         Assert.assertEquals(actual.getMessage(), expectedErrorMsg);
         Assert.assertEquals(actual.getCode(), expectedErrorCode);
         Assert.assertEquals(actual.getCause(), expectedThrowable);
+
     }
-
 }

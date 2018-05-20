@@ -2,9 +2,10 @@ package org.walkerljl.toolkit.standard;
 
 import org.walkerljl.toolkit.logging.Logger;
 import org.walkerljl.toolkit.logging.LoggerFactory;
-import org.walkerljl.toolkit.standard.abstracts.AbstractMachine;
-import org.walkerljl.toolkit.standard.exception.machine.CannotStartMachineException;
-import org.walkerljl.toolkit.standard.exception.machine.CannotStopMachineException;
+import org.walkerljl.toolkit.standard.machine.Machine;
+import org.walkerljl.toolkit.standard.machine.abstracts.AbstractMachine;
+import org.walkerljl.toolkit.standard.machine.exception.CannotStartMachineException;
+import org.walkerljl.toolkit.standard.machine.exception.CannotStopMachineException;
 
 /**
  * Bootstrap
@@ -60,6 +61,6 @@ public class Bootstrap extends AbstractMachine implements Machine {
 
     @Override
     public String getGroup() {
-        return "orgwalkerljl-commons";
+        return "toolkit-standard";
     }
 }

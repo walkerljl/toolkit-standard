@@ -21,8 +21,8 @@ public class PaginatorTest extends BaseUnitTest {
         Assert.assertTrue(paginator.isLastPage());
 
         paginator = new Paginator(2);
-        Assert.assertEquals(2, paginator.getCurrentPage());
-        Assert.assertEquals(paginator.getPageSize(), Paginator.DEFAULT_MIN_PAGE_SIZE);
+        Assert.assertEquals(1, paginator.getCurrentPage());
+        Assert.assertEquals(paginator.getPageSize(), 2);
         Assert.assertEquals((paginator.getCurrentPage() - 1) * paginator.getPageSize(), paginator.getBeginIndex());
         Assert.assertEquals(paginator.getCurrentPage() * paginator.getPageSize(), paginator.getEndIndex());
 

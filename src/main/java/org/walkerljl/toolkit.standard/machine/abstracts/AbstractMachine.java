@@ -1,14 +1,15 @@
-package org.walkerljl.toolkit.standard.abstracts;
+package org.walkerljl.toolkit.standard.machine.abstracts;
 
 import org.walkerljl.toolkit.logging.Logger;
 import org.walkerljl.toolkit.logging.LoggerFactory;
-import org.walkerljl.toolkit.standard.Machine;
-import org.walkerljl.toolkit.standard.exception.resouce.CannotDestroyResourceException;
-import org.walkerljl.toolkit.standard.exception.resouce.CannotInitResourceException;
-import org.walkerljl.toolkit.standard.exception.machine.CannotStartMachineException;
-import org.walkerljl.toolkit.standard.exception.machine.CannotStopMachineException;
-import org.walkerljl.toolkit.standard.exception.machine.MachineException;
-import org.walkerljl.toolkit.standard.support.MachineRepository;
+import org.walkerljl.toolkit.standard.machine.Machine;
+import org.walkerljl.toolkit.standard.machine.MachineRepository;
+import org.walkerljl.toolkit.standard.machine.exception.CannotStartMachineException;
+import org.walkerljl.toolkit.standard.machine.exception.CannotStopMachineException;
+import org.walkerljl.toolkit.standard.machine.exception.MachineException;
+import org.walkerljl.toolkit.standard.resource.abstracts.AbstractResource;
+import org.walkerljl.toolkit.standard.resource.exception.CannotDestroyResourceException;
+import org.walkerljl.toolkit.standard.resource.exception.CannotInitResourceException;
 
 /**
  * AbstractMachine
@@ -16,15 +17,36 @@ import org.walkerljl.toolkit.standard.support.MachineRepository;
  * @author xingxun
  * @Date 2016/12/9
  */
-public abstract class AbstractMachine implements Machine {
+public abstract class AbstractMachine extends AbstractResource implements Machine {
 
     private static Logger LOGGER = LoggerFactory.getLogger(AbstractMachine.class);
 
+    /** 是否初始化标志*/
     private volatile boolean running = false;
 
+    /**
+     * 处理启动
+     *
+     * @throws CannotStartMachineException
+     */
     public abstract void processStart() throws CannotStartMachineException;
 
+    /**
+     * 处理停止
+     *
+     * @throws CannotStopMachineException
+     */
     public abstract void processStop() throws CannotStopMachineException;
+
+    @Override
+    public void processInit() throws CannotInitResourceException {
+
+    }
+
+    @Override
+    public void processDestroy() throws CannotDestroyResourceException {
+
+    }
 
     @Override
     public void start() throws CannotStartMachineException {
@@ -82,18 +104,14 @@ public abstract class AbstractMachine implements Machine {
      */
     protected void processRun() throws MachineException {
         if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug(String.format("%s has run.", getServerName()));
+            LOGGER.debug(String.format("%s is running.", getServerName()));
         }
     }
 
     @Override
     public void run() throws MachineException {
         if (isRunning()) {
-            synchronized (this) {
-                if (isRunning()) {
-                    processRun();
-                }
-            }
+            processRun();
         }
     }
 
@@ -170,42 +188,6 @@ public abstract class AbstractMachine implements Machine {
     public boolean isRunning() {
         synchronized (this) {
             return running;
-        }
-    }
-
-    @Override
-    public String getName() {
-        return getId();
-    }
-
-    @Override
-    public String getInstanceId() {
-        return this.toString();
-    }
-
-    @Override
-    public void init() throws CannotInitResourceException {
-
-    }
-
-    @Override
-    public void destroy() throws CannotDestroyResourceException {
-        long startTime = System.currentTimeMillis();
-        try {
-            synchronized (this) {
-                if (LOGGER.isInfoEnabled()) {
-                    LOGGER.info(String.format("%s is destroying.", getServerName()));
-                }
-
-                stop();
-
-                if (LOGGER.isInfoEnabled()) {
-                    LOGGER.info(String.format("%s has destroied,consume %s milliseconds.", getServerName(), (System.currentTimeMillis() - startTime)));
-                }
-            }
-        } catch (Throwable e) {
-            LOGGER.error(String.format("%s occurs some erros when destroying.", getServerName()), e);
-            throw new CannotDestroyResourceException(e);
         }
     }
 

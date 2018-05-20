@@ -6,7 +6,7 @@ import org.walkerljl.toolkit.standard.BaseUnitTest;
 import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 
 /**
- * AppExceptionTest
+ * AppServiceExceptionTest
  *
  * @author xingxun
  */
@@ -15,7 +15,7 @@ public class AppServiceExceptionTest extends BaseUnitTest {
     @Test
     public void test() {
 
-        ErrorCode actualErrorCode = new ErrorCode() {
+        ErrorCode expectedErrorCode = new ErrorCode() {
             @Override
             public String getCode() {
                 return "code";
@@ -27,32 +27,42 @@ public class AppServiceExceptionTest extends BaseUnitTest {
             }
         };
 
-        String actualErrorMsg = "errorMsg";
-        AppServiceException expected = new AppServiceException();
-        Assert.assertNull(expected.getCode());
+        String expectedErrorMsg = "errorMsg";
+        AppServiceException actual = new AppServiceException();
+        Assert.assertNull(actual.getCode());
+        Assert.assertNull(actual.getMessage());
 
-        expected = new AppServiceException(actualErrorMsg);
-        Assert.assertEquals(expected.getMessage(), actualErrorMsg);
+        actual = new AppServiceException(expectedErrorMsg);
+        Assert.assertNull(actual.getCode());
+        Assert.assertEquals(actual.getMessage(), expectedErrorMsg);
 
-        Exception actualException = new RuntimeException();
-        expected = new AppServiceException(actualException);
-        Assert.assertTrue(actualException == expected.getCause());
+        Throwable expectedThrowable = new RuntimeException();
+        actual = new AppServiceException(expectedThrowable);
+        Assert.assertNull(actual.getCode());
+        Assert.assertEquals(actual.getCause(), expectedThrowable);
 
-        expected = new AppServiceException(actualErrorCode);
-        Assert.assertTrue(expected.getCode() == actualErrorCode);
+        actual = new AppServiceException(expectedErrorCode);
+        Assert.assertEquals(actual.getCode(), expectedErrorCode);
+        Assert.assertEquals(actual.getMessage(), expectedErrorCode.getDescription());
 
-        expected = new AppServiceException(actualErrorCode, actualErrorMsg);
-        Assert.assertEquals(expected.getMessage(), actualErrorMsg);
-        Assert.assertTrue(expected.getCode() == actualErrorCode);
+        actual = new AppServiceException(expectedErrorCode, expectedErrorMsg);
+        Assert.assertEquals(actual.getMessage(), expectedErrorMsg);
+        Assert.assertEquals(actual.getCode(), expectedErrorCode);
 
-        expected = new AppServiceException(actualErrorMsg, actualException);
-        Assert.assertEquals(expected.getMessage(), actualErrorMsg);
-        Assert.assertTrue(actualException == expected.getCause());
+        actual = new AppServiceException(expectedErrorCode, expectedThrowable);
+        Assert.assertEquals(actual.getMessage(), expectedErrorCode.getDescription());
+        Assert.assertEquals(actual.getCode(), expectedErrorCode);
+        Assert.assertEquals(actual.getCause(), expectedThrowable);
 
-        expected = new AppServiceException(actualErrorCode, actualErrorMsg, actualException);
-        Assert.assertTrue(expected.getCode() == actualErrorCode);
-        Assert.assertEquals(expected.getMessage(), actualErrorMsg);
-        Assert.assertTrue(actualException == expected.getCause());
+        actual = new AppServiceException(expectedErrorMsg, expectedThrowable);
+        Assert.assertEquals(actual.getMessage(), expectedErrorMsg);
+        Assert.assertNull(actual.getCode());
+        Assert.assertEquals(actual.getCause(), expectedThrowable);
+
+        actual = new AppServiceException(expectedErrorCode, expectedErrorMsg, expectedThrowable);
+        Assert.assertEquals(actual.getMessage(), expectedErrorMsg);
+        Assert.assertEquals(actual.getCode(), expectedErrorCode);
+        Assert.assertEquals(actual.getCause(), expectedThrowable);
 
     }
 }

@@ -1,14 +1,14 @@
-package org.walkerljl.toolkit.standard.abstracts;
+package org.walkerljl.toolkit.standard.resource.abstracts;
 
 import org.walkerljl.toolkit.logging.Logger;
 import org.walkerljl.toolkit.logging.LoggerFactory;
-import org.walkerljl.toolkit.standard.Resource;
-import org.walkerljl.toolkit.standard.exception.resouce.CannotDestroyResourceException;
-import org.walkerljl.toolkit.standard.exception.resouce.CannotInitResourceException;
-import org.walkerljl.toolkit.standard.support.ResourceRepository;
+import org.walkerljl.toolkit.standard.resource.Resource;
+import org.walkerljl.toolkit.standard.resource.exception.CannotDestroyResourceException;
+import org.walkerljl.toolkit.standard.resource.exception.CannotInitResourceException;
+import org.walkerljl.toolkit.standard.resource.ResourceRepository;
 
 /**
- * AbstractResource
+ * 抽象的资源
  *
  * @author xingxun
  * @Date 2016/12/9
@@ -17,10 +17,21 @@ public abstract class AbstractResource implements Resource {
 
     private static Logger LOGGER = LoggerFactory.getLogger(AbstractResource.class);
 
+    /** 是否初始化标志*/
     private volatile boolean inited = false;
 
+    /***
+     * 处理初始化
+     *
+     * @throws CannotInitResourceException
+     */
     public abstract void processInit() throws CannotInitResourceException;
 
+    /**
+     * 处理销毁
+     *
+     * @throws CannotDestroyResourceException
+     */
     public abstract void processDestroy() throws CannotDestroyResourceException;
 
     @Override
