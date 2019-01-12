@@ -28,7 +28,6 @@ public class MachineException extends AppException {
         super(message);
     }
 
-
     /**
      * 构造函数
      *

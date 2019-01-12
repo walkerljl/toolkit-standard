@@ -21,14 +21,16 @@ public interface Resource extends Identifer {
     /**
      * 初始化资源
      *
+     * @return
      * @throws CannotInitResourceException
      */
-    void init() throws CannotInitResourceException;
+    Resource init() throws CannotInitResourceException;
 
     /**
      * 销毁资源
      *
+     * @return
      * @throws CannotDestroyResourceException
      */
-    void destroy() throws CannotDestroyResourceException;
+    Resource destroy() throws CannotDestroyResourceException;
 }

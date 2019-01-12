@@ -1,7 +1,7 @@
 package org.walkerljl.toolkit.standard;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * ResultTest
@@ -13,19 +13,19 @@ public class ResultTest {
     /**
      * 默认成功编码
      */
-    private static final String DEFAULT_SUCCESS_CODE = "200";
+    private static final String DEFAULT_SUCCESS_CODE    = "200";
     /**
      * 默认失败编码
      */
-    private static final String DEFAULT_FAILURE_CODE = "500";
+    private static final String DEFAULT_FAILURE_CODE    = "500";
     /**
      * 默认成功消息体
      */
-    private static final String DEFAULT_SUCCESS_MESSAGE = "操作成功";
+    private static final String DEFAULT_SUCCESS_MESSAGE = "SUCCESS";
     /**
      * 默认失败消息体
      */
-    private static final String DEFAULT_FAILURE_MESSAGE = "操作失败";
+    private static final String DEFAULT_FAILURE_MESSAGE = "FAILURE";
 
     private void assertDefaultFailure(Result<Integer> expected) {
 
@@ -90,7 +90,7 @@ public class ResultTest {
         doAssert(expected, actualResult, DEFAULT_SUCCESS_CODE, actualMessage, null);
 
         expected = Result.success(actualData);
-        doAssert(expected, actualResult,  DEFAULT_SUCCESS_CODE, DEFAULT_SUCCESS_MESSAGE, actualData);
+        doAssert(expected, actualResult, DEFAULT_SUCCESS_CODE, DEFAULT_SUCCESS_MESSAGE, actualData);
 
         expected = Result.success(actualCode, actualMessage);
         doAssert(expected, actualResult, actualCode, actualMessage, null);
@@ -118,7 +118,7 @@ public class ResultTest {
         doAssert(expected, actualResult, DEFAULT_FAILURE_CODE, actualMessage, null);
 
         expected = Result.failure(actualData);
-        doAssert(expected, actualResult,  DEFAULT_FAILURE_CODE, DEFAULT_FAILURE_MESSAGE, actualData);
+        doAssert(expected, actualResult, DEFAULT_FAILURE_CODE, DEFAULT_FAILURE_MESSAGE, actualData);
 
         expected = Result.failure(actualCode, actualMessage);
         doAssert(expected, actualResult, actualCode, actualMessage, null);

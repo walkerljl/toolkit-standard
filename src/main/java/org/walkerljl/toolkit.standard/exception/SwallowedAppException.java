@@ -12,11 +12,6 @@ public class SwallowedAppException extends AppException {
     private static final long serialVersionUID = -6786549876849535944L;
 
     /**
-     * 异常码
-     */
-    protected ErrorCode code;
-
-    /**
      * 默认构造函数
      */
     public SwallowedAppException() {
@@ -93,14 +88,5 @@ public class SwallowedAppException extends AppException {
     public SwallowedAppException(ErrorCode code, String message, Throwable e) {
         super(message, e);
         this.code = code;
-    }
-
-    /**
-     * 获取异常码
-     *
-     * @return
-     */
-    public ErrorCode getCode() {
-        return code;
     }
 }

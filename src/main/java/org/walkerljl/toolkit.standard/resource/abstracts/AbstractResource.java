@@ -3,9 +3,10 @@ package org.walkerljl.toolkit.standard.resource.abstracts;
 import org.walkerljl.toolkit.logging.Logger;
 import org.walkerljl.toolkit.logging.LoggerFactory;
 import org.walkerljl.toolkit.standard.resource.Resource;
+import org.walkerljl.toolkit.standard.resource.ResourceRepository;
 import org.walkerljl.toolkit.standard.resource.exception.CannotDestroyResourceException;
 import org.walkerljl.toolkit.standard.resource.exception.CannotInitResourceException;
-import org.walkerljl.toolkit.standard.resource.ResourceRepository;
+import org.walkerljl.toolkit.standard.resource.impl.ResourceRepositoryFactory;
 
 /**
  * 抽象的资源
@@ -15,10 +16,12 @@ import org.walkerljl.toolkit.standard.resource.ResourceRepository;
  */
 public abstract class AbstractResource implements Resource {
 
-    private static Logger LOGGER = LoggerFactory.getLogger(AbstractResource.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AbstractResource.class);
 
     /** 是否初始化标志*/
     private volatile boolean inited = false;
+
+    private ResourceRepository resourceRepository = ResourceRepositoryFactory.getDefaultRepository();
 
     /***
      * 处理初始化
@@ -35,8 +38,19 @@ public abstract class AbstractResource implements Resource {
     public abstract void processDestroy() throws CannotDestroyResourceException;
 
     @Override
+    public String getId() {
+        return getClass().getSimpleName();
+    }
+
+    @Override
     public String getName() {
         return getId();
+    }
+
+    @Override
+    public String getGroup() {
+        Class<?>[] interfaces = getClass().getInterfaces();
+        return interfaces == null || interfaces.length < 1 ? null : interfaces[0].getSimpleName();
     }
 
     @Override
@@ -45,19 +59,24 @@ public abstract class AbstractResource implements Resource {
     }
 
     @Override
-    public void init() throws CannotInitResourceException {
+    public Resource init() throws CannotInitResourceException {
         long startTime = System.currentTimeMillis();
         try {
-            if (LOGGER.isInfoEnabled()) {
-                LOGGER.info(String.format("%s is initing.", getServerName()));
-            }
             if (!inited) {
                 synchronized (this) {
-                    processInit();
-                    ResourceRepository.register(getGroup(), getId(), this);
-                    inited = true;
-                    if (LOGGER.isInfoEnabled()) {
-                        LOGGER.info(String.format("%s has inited,consume %s milliseconds.", getServerName(), (System.currentTimeMillis() - startTime)));
+                    if (!inited) {
+                        if (LOGGER.isInfoEnabled()) {
+                            LOGGER.info(String.format("%s is initing.", getServerName()));
+                        }
+
+                        processInit();
+                        resourceRepository.register(resourceRepository.buildKey(getGroup(), getId()), this);
+                        inited = true;
+
+                        if (LOGGER.isInfoEnabled()) {
+                            LOGGER.info(String.format("%s has inited,consume %s milliseconds.", getServerName(),
+                                    (System.currentTimeMillis() - startTime)));
+                        }
                     }
                 }
             }
@@ -65,27 +84,36 @@ public abstract class AbstractResource implements Resource {
             LOGGER.error(String.format("%s occurs some erros when initing.", getServerName()), e);
             throw new CannotInitResourceException(e);
         }
+        return this;
     }
 
     @Override
-    public void destroy() throws CannotDestroyResourceException {
+    public Resource destroy() throws CannotDestroyResourceException {
         long startTime = System.currentTimeMillis();
         try {
-            if (LOGGER.isInfoEnabled()) {
-                LOGGER.info(String.format("%s is destroying.", getServerName()));
-            }
-            synchronized (this) {
-                processDestroy();
-                ResourceRepository.unregister(getGroup(), getId());
-                inited = false;
-                if (LOGGER.isInfoEnabled()) {
-                    LOGGER.info(String.format("%s has destroied,consume %s milliseconds.", getServerName(), (System.currentTimeMillis() - startTime)));
+            if (inited) {
+                synchronized (this) {
+                    if (inited) {
+                        if (LOGGER.isInfoEnabled()) {
+                            LOGGER.info(String.format("%s is destroying.", getServerName()));
+                        }
+
+                        processDestroy();
+                        resourceRepository.unregister(resourceRepository.buildKey(getGroup(), getId()));
+                        inited = false;
+
+                        if (LOGGER.isInfoEnabled()) {
+                            LOGGER.info(String.format("%s has destroied,consume %s milliseconds.", getServerName(),
+                                    (System.currentTimeMillis() - startTime)));
+                        }
+                    }
                 }
             }
         } catch (Throwable e) {
             LOGGER.error(String.format("%s occurs some erros when destroying.", getServerName()), e);
             throw new CannotDestroyResourceException(e);
         }
+        return this;
     }
 
     /**

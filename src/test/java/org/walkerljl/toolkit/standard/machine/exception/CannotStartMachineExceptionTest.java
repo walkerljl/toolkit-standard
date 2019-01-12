@@ -1,14 +1,14 @@
 package org.walkerljl.toolkit.standard.machine.exception;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.Assert;
+import org.junit.Test;
+import org.walkerljl.toolkit.standard.enums.IEnum;
 import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 
 /**
  * CannotStartMachineExceptionTest
  *
  * @author xingxun
- * @Date 2018/5/18
  */
 public class CannotStartMachineExceptionTest {
 
@@ -24,6 +24,11 @@ public class CannotStartMachineExceptionTest {
             @Override
             public String getDescription() {
                 return "description";
+            }
+
+            @Override
+            public IEnum getEnumObject(String code) {
+                return null;
             }
         };
 

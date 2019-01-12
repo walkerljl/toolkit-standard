@@ -7,6 +7,9 @@ import org.walkerljl.toolkit.standard.machine.MachineRepository;
 import org.walkerljl.toolkit.standard.machine.exception.CannotStartMachineException;
 import org.walkerljl.toolkit.standard.machine.exception.CannotStopMachineException;
 import org.walkerljl.toolkit.standard.machine.exception.MachineException;
+import org.walkerljl.toolkit.standard.machine.exception.MachineRunException;
+import org.walkerljl.toolkit.standard.machine.impl.DefaultMachineRepository;
+import org.walkerljl.toolkit.standard.machine.impl.MachineRepositoryFactory;
 import org.walkerljl.toolkit.standard.resource.abstracts.AbstractResource;
 import org.walkerljl.toolkit.standard.resource.exception.CannotDestroyResourceException;
 import org.walkerljl.toolkit.standard.resource.exception.CannotInitResourceException;
@@ -19,10 +22,12 @@ import org.walkerljl.toolkit.standard.resource.exception.CannotInitResourceExcep
  */
 public abstract class AbstractMachine extends AbstractResource implements Machine {
 
-    private static Logger LOGGER = LoggerFactory.getLogger(AbstractMachine.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AbstractMachine.class);
 
     /** 是否初始化标志*/
     private volatile boolean running = false;
+
+    private MachineRepository machineRepository = MachineRepositoryFactory.getDefaultRepository();
 
     /**
      * 处理启动
@@ -49,7 +54,7 @@ public abstract class AbstractMachine extends AbstractResource implements Machin
     }
 
     @Override
-    public void start() throws CannotStartMachineException {
+    public Machine start() throws CannotStartMachineException {
 
         long startTime = System.currentTimeMillis();
         try {
@@ -62,11 +67,12 @@ public abstract class AbstractMachine extends AbstractResource implements Machin
 
                         init();
                         processStart();
-                        MachineRepository.register(getGroup(), getId(), this);
+                        machineRepository.register(machineRepository.buildKey(getGroup(), getId()), this);
                         running = true;
 
                         if (LOGGER.isInfoEnabled()) {
-                            LOGGER.info(String.format("%s has started,consume %s milliseconds.", getServerName(), (System.currentTimeMillis() - startTime)));
+                            LOGGER.info(String.format("%s has started,consume %s milliseconds.", getServerName(),
+                                    (System.currentTimeMillis() - startTime)));
                         }
 
                         //do call back
@@ -88,6 +94,7 @@ public abstract class AbstractMachine extends AbstractResource implements Machin
             }
             throw new CannotStartMachineException(e);
         }
+        return this;
     }
 
     @Override
@@ -102,17 +109,18 @@ public abstract class AbstractMachine extends AbstractResource implements Machin
      *
      * @throws MachineException
      */
-    protected void processRun() throws MachineException {
+    protected void processRun() throws MachineRunException {
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug(String.format("%s is running.", getServerName()));
         }
     }
 
     @Override
-    public void run() throws MachineException {
+    public Machine run() throws MachineException {
         if (isRunning()) {
             processRun();
         }
+        return this;
     }
 
     @Override
@@ -123,7 +131,7 @@ public abstract class AbstractMachine extends AbstractResource implements Machin
     }
 
     @Override
-    public void stop() throws CannotStopMachineException {
+    public Machine stop() throws CannotStopMachineException {
         long startTime = System.currentTimeMillis();
         try {
             if (running) {
@@ -134,11 +142,12 @@ public abstract class AbstractMachine extends AbstractResource implements Machin
                         }
 
                         processStop();
-                        MachineRepository.unregister(getGroup(), getId());
+                        machineRepository.unregister(machineRepository.buildKey(getGroup(), getId()));
                         running = false;
 
                         if (LOGGER.isInfoEnabled()) {
-                            LOGGER.info(String.format("%s has stopped,consume %s milliseconds.", getServerName(), (System.currentTimeMillis() - startTime)));
+                            LOGGER.info(String.format("%s has stopped,consume %s milliseconds.", getServerName(),
+                                    (System.currentTimeMillis() - startTime)));
                         }
 
                         //do call back
@@ -160,6 +169,7 @@ public abstract class AbstractMachine extends AbstractResource implements Machin
             }
             throw new CannotStopMachineException(e);
         }
+        return this;
     }
 
     @Override
@@ -177,11 +187,12 @@ public abstract class AbstractMachine extends AbstractResource implements Machin
     }
 
     @Override
-    public void restart() throws CannotStartMachineException, CannotStopMachineException {
+    public Machine restart() throws CannotStartMachineException, CannotStopMachineException {
         synchronized (this) {
             stop();
             start();
         }
+        return this;
     }
 
     @Override

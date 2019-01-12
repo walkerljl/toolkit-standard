@@ -1,12 +1,12 @@
 package org.walkerljl.toolkit.standard.exception;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.walkerljl.toolkit.standard.BaseUnitTest;
 
 /**
  * UncheckedExceptionTest
- * 
+ *
  * @author xingxun
  */
 public class UncheckedExceptionTest extends BaseUnitTest {

@@ -6,7 +6,7 @@ import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 /**
  * AssertUtils
  *
- * @author lijunlin
+ * @author xingxun
  * @Date 2017/10/22
  */
 public class AssertUtil {

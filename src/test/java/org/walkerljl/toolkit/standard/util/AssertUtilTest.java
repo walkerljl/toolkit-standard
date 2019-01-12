@@ -1,19 +1,18 @@
-package org.walkerljl.toolkit.standard.exception.util;
+package org.walkerljl.toolkit.standard.util;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import org.walkerljl.toolkit.standard.util.AssertUtils;
+import org.junit.Assert;
+import org.junit.Test;
 import org.walkerljl.toolkit.standard.BaseUnitTest;
+import org.walkerljl.toolkit.standard.enums.IEnum;
 import org.walkerljl.toolkit.standard.exception.AppException;
 import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 
 /**
- * AssertUtilsTest
+ * AssertUtilTest
  *
  * @author lijunlin
- * @Date 2017/10/22
  */
-public class AssertUtilsTest extends BaseUnitTest {
+public class AssertUtilTest extends BaseUnitTest {
 
     @Test
     public void test() {
@@ -27,16 +26,21 @@ public class AssertUtilsTest extends BaseUnitTest {
             public String getDescription() {
                 return "errorDescription";
             }
+
+            @Override
+            public IEnum getEnumObject(String code) {
+                return null;
+            }
         };
         String message = "message";
 
-        AssertUtils.assertTrue(true, errorCode, message);
-        AssertUtils.assertTrue(true, errorCode);
-        AssertUtils.assertTrue(true, message);
+        AssertUtil.assertTrue(true, errorCode, message);
+        AssertUtil.assertTrue(true, errorCode);
+        AssertUtil.assertTrue(true, message);
 
         boolean result = false;
         try {
-            AssertUtils.assertTrue(false, errorCode, message);
+            AssertUtil.assertTrue(false, errorCode, message);
         } catch (AppException e) {
             if (message.equals(e.getMessage())
                     && errorCode.getCode().equals(e.getCode().getCode())
@@ -48,7 +52,7 @@ public class AssertUtilsTest extends BaseUnitTest {
         result = false;
 
         try {
-            AssertUtils.assertTrue(false, errorCode);
+            AssertUtil.assertTrue(false, errorCode);
         } catch (AppException e) {
             if (errorCode.getDescription().equals(e.getMessage())
                     && errorCode.getCode().equals(e.getCode().getCode())
@@ -60,10 +64,10 @@ public class AssertUtilsTest extends BaseUnitTest {
         result = false;
 
         try {
-            AssertUtils.assertTrue(false, message);
+            AssertUtil.assertTrue(false, message);
         } catch (AppException e) {
             if (message.equals(e.getMessage())
-            && e.getCode() == null) {
+                    && e.getCode() == null) {
                 result = true;
             }
         }

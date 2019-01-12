@@ -27,7 +27,6 @@ public class CannotDestroyResourceException extends ResourceException {
         super(message);
     }
 
-
     /**
      * 构造函数
      *

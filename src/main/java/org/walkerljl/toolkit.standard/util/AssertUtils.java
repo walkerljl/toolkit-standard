@@ -6,7 +6,7 @@ import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 /**
  * AssertUtils
  *
- * @author lijunlin
+ * @author xingxun
  * @Date 2017/10/22
  */
 public class AssertUtils {
@@ -18,10 +18,7 @@ public class AssertUtils {
      * @param message 错误消息
      */
     public static void assertTrue(boolean expression, String message) {
-        if (expression) {
-            return;
-        }
-        throw new AppException(message);
+        AssertUtil.assertTrue(expression, message);
     }
 
     /**
@@ -31,10 +28,7 @@ public class AssertUtils {
      * @param errorCode 错误码
      */
     public static void assertTrue(boolean expression, ErrorCode errorCode) {
-        if (expression) {
-            return;
-        }
-        throw new AppException(errorCode);
+        AssertUtil.assertTrue(expression, errorCode);
     }
 
     /**
@@ -45,9 +39,6 @@ public class AssertUtils {
      * @param message 异常消息
      */
     public static void assertTrue(boolean expression, ErrorCode errorCode, String message) {
-        if (expression) {
-            return;
-        }
-        throw new AppException(errorCode, message);
+        AssertUtil.assertTrue(expression, errorCode, message);
     }
 }

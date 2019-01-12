@@ -27,7 +27,6 @@ public class CannotInitResourceException extends ResourceException {
         super(message);
     }
 
-
     /**
      * 构造函数
      *

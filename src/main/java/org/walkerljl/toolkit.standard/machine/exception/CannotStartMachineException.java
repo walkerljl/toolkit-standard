@@ -27,7 +27,6 @@ public class CannotStartMachineException extends MachineException {
         super(message);
     }
 
-
     /**
      * 构造函数
      *

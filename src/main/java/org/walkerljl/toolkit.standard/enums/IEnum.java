@@ -20,4 +20,12 @@ public interface IEnum {
      * @return
      */
     String getDescription();
+
+    /**
+     * Get enum object
+     *
+     * @param code Code
+     * @return
+     */
+    IEnum getEnumObject(String code);
 }

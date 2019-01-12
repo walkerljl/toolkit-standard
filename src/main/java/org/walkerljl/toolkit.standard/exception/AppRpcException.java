@@ -27,7 +27,6 @@ public class AppRpcException extends AppException {
         super(message);
     }
 
-
     /**
      * 构造函数
      *

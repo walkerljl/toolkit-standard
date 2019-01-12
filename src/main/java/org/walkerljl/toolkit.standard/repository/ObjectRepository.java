@@ -1,42 +1,42 @@
-package org.walkerljl.toolkit.standard;
+package org.walkerljl.toolkit.standard.repository;
 
 import java.util.Collection;
 
 /**
- * 仓库
+ * 对象仓储
  *
  * @author xingxun
  *
  * @param <KEY>
  * @param <VALUE>
  */
-public interface Repository<KEY, VALUE> {
+public interface ObjectRepository<KEY, VALUE> {
 
     /**
-     * 注册资源
+     * 注册对象
      *
-     * @param key 资源Key
-     * @param value 资源值
+     * @param key 对象Key
+     * @param value 对象
      */
     void register(KEY key, VALUE value);
 
     /**
-     * 移除指定资源
+     * 移除指定对象
      *
-     * @param key 资源Key
+     * @param key 对象Key
      */
     void unregister(KEY key);
 
     /**
-     * 查找资源
+     * 查找对象
      *
-     * @param key 资源Key
+     * @param key 对象Key
      * @return
      */
     VALUE lookup(KEY key);
 
     /**
-     * 查找所有资源
+     * 查找所有对象
      *
      * @return
      */

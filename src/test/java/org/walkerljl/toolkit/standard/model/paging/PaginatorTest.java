@@ -1,10 +1,12 @@
-package org.walkerljl.toolkit.standard;
+package org.walkerljl.toolkit.standard.model.paging;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import org.walkerljl.toolkit.standard.model.paging.Paginator;
+import org.junit.Assert;
+import org.junit.Test;
+import org.walkerljl.toolkit.standard.BaseUnitTest;
 
 /**
+ * PaginatorTest
+ *
  * @author xingxun
  */
 public class PaginatorTest extends BaseUnitTest {

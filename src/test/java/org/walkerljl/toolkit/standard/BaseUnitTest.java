@@ -1,7 +1,7 @@
 package org.walkerljl.toolkit.standard;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.junit.After;
+import org.junit.Before;
 import org.walkerljl.toolkit.logging.Logger;
 import org.walkerljl.toolkit.logging.LoggerFactory;
 
@@ -9,18 +9,18 @@ import org.walkerljl.toolkit.logging.LoggerFactory;
  *
  * 单元测试基类
  *
- * @author lijunlin
+ * @author xingxun
  */
 public class BaseUnitTest {
 
     protected final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
-    @BeforeMethod
+    @Before
     public void before() {
         LOGGER.debug("Initialized some resoruces.");
     }
 
-    @AfterMethod
+    @After
     public void after() {
         LOGGER.debug("Released some resources.");
     }

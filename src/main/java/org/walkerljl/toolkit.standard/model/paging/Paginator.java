@@ -2,14 +2,14 @@ package org.walkerljl.toolkit.standard.model.paging;
 
 import java.util.List;
 
-import org.walkerljl.toolkit.standard.model.BaseEntity;
+import org.walkerljl.toolkit.standard.model.BaseModel;
 
 /**
  * 分页器
  *
  * @author xingxun
  */
-public class Paginator<T> extends BaseEntity {
+public class Paginator<T> extends BaseModel {
 
     private static final long serialVersionUID = 1L;
 
@@ -21,7 +21,7 @@ public class Paginator<T> extends BaseEntity {
     /** 当前页码*/
     private int currentPage = 1;
     /** 每页数据条数*/
-    public int pageSize = DEFAULT_MIN_PAGE_SIZE;
+    private int pageSize    = DEFAULT_MIN_PAGE_SIZE;
     /** 数据列表*/
     private List<T> dataList;
     /** 是否查询总数*/
@@ -141,6 +141,7 @@ public class Paginator<T> extends BaseEntity {
     }
 
     //getter and setters
+
     /**
      * 获取当前页页码
      *

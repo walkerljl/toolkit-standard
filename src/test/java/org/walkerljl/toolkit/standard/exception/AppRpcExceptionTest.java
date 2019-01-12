@@ -1,8 +1,9 @@
 package org.walkerljl.toolkit.standard.exception;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.walkerljl.toolkit.standard.BaseUnitTest;
+import org.walkerljl.toolkit.standard.enums.IEnum;
 import org.walkerljl.toolkit.standard.exception.code.ErrorCode;
 
 /**
@@ -24,6 +25,11 @@ public class AppRpcExceptionTest extends BaseUnitTest {
             @Override
             public String getDescription() {
                 return "description";
+            }
+
+            @Override
+            public IEnum getEnumObject(String code) {
+                return null;
             }
         };
 
